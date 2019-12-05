@@ -8,7 +8,7 @@ namespace TechnicalVision.WindowsForms.Views
 {
     public class LoadFile : BaseView
     {
-        public LoadFile(Form1 form1) : base(form1)
+        public LoadFile(MainWindow form1) : base(form1)
         {
         }
     }

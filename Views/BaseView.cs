@@ -8,9 +8,9 @@ namespace TechnicalVision.WindowsForms.Views
 {
     public abstract class BaseView
     {
-        protected Form1 Form1 { get; set; }
+        protected MainWindow Form1 { get; set; }
 
-        public BaseView(Form1 form1)
+        public BaseView(MainWindow form1)
         {
             Form1 = form1;
         }

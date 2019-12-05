@@ -1,6 +1,6 @@
 ﻿namespace TechnicalVision.WindowsForms
 {
-    partial class Form1
+    partial class MainWindow
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -142,14 +142,14 @@
             this.splitter1.TabIndex = 4;
             this.splitter1.TabStop = false;
             // 
-            // Form1
+            // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(805, 470);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
-            this.Name = "Form1";
+            this.Name = "MainWindow";
             this.Text = "Анянянь)";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
