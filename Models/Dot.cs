@@ -16,7 +16,7 @@ namespace TechnicalVision.WindowsForms.Models
 
         public static bool TryParse(string value, out Dot dot)
         {
-            string[] values = value.Split(' ');
+            string[] values = value.Split(',');
 
             dot = new Dot();
 
@@ -38,7 +38,7 @@ namespace TechnicalVision.WindowsForms.Models
 
         public override string ToString()
         {
-            return $"{X} {Y} {C}";
+            return $"{X},{Y},{C}";
         }
     }
 }
