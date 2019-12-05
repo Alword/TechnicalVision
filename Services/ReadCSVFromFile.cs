@@ -18,7 +18,14 @@ namespace TechnicalVision.WindowsForms.Services
         {
             string[] source = File.ReadAllLines(filePath);
             var dots = new List<Dot>(source.Length);
-            source.Select(new Dot(){ })
+
+            foreach (string line in source)
+            {
+                Dot.TryParse(line, out Dot dot);
+                dots.Add(dot);
+            }
+
+            return dots;
         }
     }
 }
