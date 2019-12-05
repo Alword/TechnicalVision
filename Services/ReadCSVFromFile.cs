@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
-using System.Linq;
+using TechnicalVision.WindowsForms.Abstractions;
 using TechnicalVision.WindowsForms.Models;
 
 namespace TechnicalVision.WindowsForms.Services
@@ -16,6 +17,9 @@ namespace TechnicalVision.WindowsForms.Services
 
         public List<Dot> GetDots()
         {
+            if (string.IsNullOrEmpty(filePath) || !File.Exists(filePath))
+                return new List<Dot>();
+
             string[] source = File.ReadAllLines(filePath);
             var dots = new List<Dot>(source.Length);
 
@@ -27,5 +31,6 @@ namespace TechnicalVision.WindowsForms.Services
 
             return dots;
         }
+
     }
 }

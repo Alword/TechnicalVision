@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Markup;
+using TechnicalVision.WindowsForms.Abstractions;
 
 namespace TechnicalVision.WindowsForms.Models
 {
@@ -35,5 +36,9 @@ namespace TechnicalVision.WindowsForms.Models
             return result;
         }
 
+        public override string ToString()
+        {
+            return $"{X} {Y} {C}";
+        }
     }
 }
