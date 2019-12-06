@@ -28,15 +28,20 @@ namespace TechnicalVision.WindowsForms
 
         private readonly ICommand openCsvFile;
         private readonly ICommand<List<Dot>> saveCsvFile;
+        private readonly ICommand<int> generateCommand;
         public MainWindow()
         {
             InitializeComponent();
             saveCsvFile = new SaveCsvCommand();
             openCsvFile = new OpenCsvCommand(this);
+            generateCommand = new GenerateDots(this);
+            // drawDots = new Dra
         }
 
         private void OpenToolStripMenuItem_Click(object sender, EventArgs e) => openCsvFile.Execute();
 
         private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e) => saveCsvFile.Execute(CurrentDots);
+
+        private void GenerateToolStripMenuItem_Click(object sender, EventArgs e) => generateCommand.Execute(50);
     }
 }

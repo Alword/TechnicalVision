@@ -37,6 +37,9 @@
             this.OpenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SaveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.генераторТочекToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сгенерироватьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сгенерироватьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
@@ -89,7 +92,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.файлToolStripMenuItem});
+            this.файлToolStripMenuItem,
+            this.генераторТочекToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(805, 24);
@@ -109,22 +113,45 @@
             // OpenToolStripMenuItem
             // 
             this.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem";
-            this.OpenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.OpenToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.OpenToolStripMenuItem.Text = "Открыть";
             this.OpenToolStripMenuItem.Click += new System.EventHandler(this.OpenToolStripMenuItem_Click);
             // 
             // сохранитьToolStripMenuItem
             // 
             this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.сохранитьToolStripMenuItem.Text = "Сохранить";
             // 
             // SaveAsToolStripMenuItem
             // 
             this.SaveAsToolStripMenuItem.Name = "SaveAsToolStripMenuItem";
-            this.SaveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.SaveAsToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.SaveAsToolStripMenuItem.Text = "Сохранить как";
             this.SaveAsToolStripMenuItem.Click += new System.EventHandler(this.SaveAsToolStripMenuItem_Click);
+            // 
+            // генераторТочекToolStripMenuItem
+            // 
+            this.генераторТочекToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.сгенерироватьToolStripMenuItem,
+            this.сгенерироватьToolStripMenuItem1});
+            this.генераторТочекToolStripMenuItem.Name = "генераторТочекToolStripMenuItem";
+            this.генераторТочекToolStripMenuItem.Size = new System.Drawing.Size(110, 20);
+            this.генераторТочекToolStripMenuItem.Text = "Генератор точек";
+            // 
+            // сгенерироватьToolStripMenuItem
+            // 
+            this.сгенерироватьToolStripMenuItem.Name = "сгенерироватьToolStripMenuItem";
+            this.сгенерироватьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.сгенерироватьToolStripMenuItem.Text = "Сгенерировать";
+            this.сгенерироватьToolStripMenuItem.Click += new System.EventHandler(this.GenerateToolStripMenuItem_Click);
+            // 
+            // сгенерироватьToolStripMenuItem1
+            // 
+            this.сгенерироватьToolStripMenuItem1.Name = "сгенерироватьToolStripMenuItem1";
+            this.сгенерироватьToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.сгенерироватьToolStripMenuItem1.Text = "Сгенерировать ...";
+            this.сгенерироватьToolStripMenuItem1.Click += new System.EventHandler(this.GenerateToolStripMenuItem_Click);
             // 
             // panel2
             // 
@@ -174,6 +201,9 @@
         private System.Windows.Forms.ToolStripMenuItem сохранитьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem SaveAsToolStripMenuItem;
         public System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ToolStripMenuItem генераторТочекToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem сгенерироватьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem сгенерироватьToolStripMenuItem1;
     }
 }
 

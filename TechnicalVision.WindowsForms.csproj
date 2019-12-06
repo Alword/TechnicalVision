@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstractions\ICommand.cs" />
+    <Compile Include="Commands\GenerateDots.cs" />
     <Compile Include="Commands\OpenCsvCommand.cs" />
     <Compile Include="Commands\SaveCsvCommand.cs" />
     <Compile Include="Services\CsvOpenFileDialog.cs" />
