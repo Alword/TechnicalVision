@@ -6,31 +6,26 @@ namespace TechnicalVision.WindowsForms.Services.RegressionAnalysis
 {
     public class AverageAngleSearch : IRegressionAnalysis
     {
-        public (int, double) Search(IReadOnlyCollection<Dot> dots)
+        public (int, double) Search(IReadOnlyList<Dot> dots)
         {
-            int minA = 0;
-            int minB = 0;
-            int min = int.MaxValue;
-            for (int a = 0; a < 256; a++)
+            double SummA = 0;
+            double SummB = 0;
+            int countPairs = 0;
+            for(int i = 0; i < dots.Count; i++)
             {
-                for (int b = 0; b < 256; b++)
+                Dot dotLeft = dots[i];
+                for(int j = i + 1; j < dots.Count; j++)
                 {
-                    int sum = 0;
-                    foreach (var dot in dots)
-                    {
-                        sum += dot.Y - a - b * dot.X;
-                    }
-
-                    if (sum < min)
-                    {
-                        minA = a;
-                        minB = b;
-                        min = sum;
-                    }
+                    Dot dotRight = dots[j];
+                    double a = -(dotLeft.Y - dotRight.Y) / (double)(dotRight.X - dotLeft.X);
+                    double b = -(dotLeft.X * dotRight.Y - dotRight.X * dotLeft.Y) / (double)(dotRight.X - dotLeft.X);
+                    SummA += a;
+                    SummB += b;
+                    countPairs++;
                 }
             }
 
-            return (minA, minB);
+            return ((int)(SummB / countPairs), SummA / countPairs);
         }
     }
 }

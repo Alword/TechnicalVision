@@ -38,10 +38,11 @@
             this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SaveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.генераторТочекToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.построитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.линиюНаилучшегоПриближенияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.линияСреднихExtraDipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -138,6 +139,22 @@
             this.генераторТочекToolStripMenuItem.Text = "Генератор точек";
             this.генераторТочекToolStripMenuItem.Click += new System.EventHandler(this.GenerateToolStripMenuItem_Click);
             // 
+            // построитьToolStripMenuItem
+            // 
+            this.построитьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.линиюНаилучшегоПриближенияToolStripMenuItem,
+            this.линияСреднихExtraDipToolStripMenuItem});
+            this.построитьToolStripMenuItem.Name = "построитьToolStripMenuItem";
+            this.построитьToolStripMenuItem.Size = new System.Drawing.Size(78, 20);
+            this.построитьToolStripMenuItem.Text = "Построить";
+            // 
+            // линиюНаилучшегоПриближенияToolStripMenuItem
+            // 
+            this.линиюНаилучшегоПриближенияToolStripMenuItem.Name = "линиюНаилучшегоПриближенияToolStripMenuItem";
+            this.линиюНаилучшегоПриближенияToolStripMenuItem.Size = new System.Drawing.Size(265, 22);
+            this.линиюНаилучшегоПриближенияToolStripMenuItem.Text = "Линию наилучшего приближения";
+            this.линиюНаилучшегоПриближенияToolStripMenuItem.Click += new System.EventHandler(this.DrawBestApproximationToolStripMenuItem_Click);
+            // 
             // panel2
             // 
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -155,20 +172,12 @@
             this.panel3.Size = new System.Drawing.Size(805, 450);
             this.panel3.TabIndex = 3;
             // 
-            // построитьToolStripMenuItem
+            // линияСреднихExtraDipToolStripMenuItem
             // 
-            this.построитьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.линиюНаилучшегоПриближенияToolStripMenuItem});
-            this.построитьToolStripMenuItem.Name = "построитьToolStripMenuItem";
-            this.построитьToolStripMenuItem.Size = new System.Drawing.Size(78, 20);
-            this.построитьToolStripMenuItem.Text = "Построить";
-            // 
-            // линиюНаилучшегоПриближенияToolStripMenuItem
-            // 
-            this.линиюНаилучшегоПриближенияToolStripMenuItem.Name = "линиюНаилучшегоПриближенияToolStripMenuItem";
-            this.линиюНаилучшегоПриближенияToolStripMenuItem.Size = new System.Drawing.Size(265, 22);
-            this.линиюНаилучшегоПриближенияToolStripMenuItem.Text = "Линию наилучшего приближения";
-            this.линиюНаилучшегоПриближенияToolStripMenuItem.Click += new System.EventHandler(this.DrawBestApproximationToolStripMenuItem_Click);
+            this.линияСреднихExtraDipToolStripMenuItem.Name = "линияСреднихExtraDipToolStripMenuItem";
+            this.линияСреднихExtraDipToolStripMenuItem.Size = new System.Drawing.Size(265, 22);
+            this.линияСреднихExtraDipToolStripMenuItem.Text = "Линия средних extra dip";
+            this.линияСреднихExtraDipToolStripMenuItem.Click += new System.EventHandler(this.AvarageAngleExtraDipToolStripMenuItem_Click);
             // 
             // MainWindow
             // 
@@ -204,6 +213,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolStripMenuItem построитьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem линиюНаилучшегоПриближенияToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem линияСреднихExtraDipToolStripMenuItem;
     }
 }
 

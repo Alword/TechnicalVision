@@ -13,8 +13,12 @@ namespace TechnicalVision.WindowsForms.Commands
 {
     public class DrawBestApproximationLine : BaseCommand, ICommand<List<Dot>>
     {
-        private readonly IRegressionAnalysis regressionAnalysis = new ExoustiveSearch();
-        public DrawBestApproximationLine(MainWindow mainWindow) : base(mainWindow) { }
+        private readonly IRegressionAnalysis regressionAnalysis;
+
+        public DrawBestApproximationLine(MainWindow mainWindow, IRegressionAnalysis regression) : base(mainWindow)
+        {
+            regressionAnalysis = regression;
+        }
 
         public void Execute(List<Dot> dots)
         {

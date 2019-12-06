@@ -9,6 +9,6 @@ namespace TechnicalVision.WindowsForms.Abstractions
 {
     public interface IRegressionAnalysis
     {
-        (int, double) Search(IReadOnlyCollection<Dot> dots);
+        (int, double) Search(IReadOnlyList<Dot> dots);
     }
 }

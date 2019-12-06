@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using TechnicalVision.WindowsForms.Abstractions;
 using TechnicalVision.WindowsForms.Commands;
 using TechnicalVision.WindowsForms.Models;
+using TechnicalVision.WindowsForms.Services.RegressionAnalysis;
 
 namespace TechnicalVision.WindowsForms
 {
@@ -36,6 +37,7 @@ namespace TechnicalVision.WindowsForms
         private readonly ICommand openCsvFile;
         private readonly ICommand<List<Dot>> drawDotsCommand;
         private readonly ICommand<List<Dot>> drawBestApproximationCommand;
+        private readonly ICommand<List<Dot>> drawAvarageApproximationCommand;
         private readonly ICommand<List<Dot>> saveCsvFile;
         private readonly ICommand<int> generateCommand;
         public MainWindow()
@@ -45,7 +47,8 @@ namespace TechnicalVision.WindowsForms
             openCsvFile = new OpenCsvCommand(this);
             generateCommand = new GenerateDots(this);
             drawDotsCommand = new DrawDots(this);
-            drawBestApproximationCommand = new DrawBestApproximationLine(this);
+            drawBestApproximationCommand = new DrawBestApproximationLine(this, new ExoustiveSearch());
+            drawAvarageApproximationCommand = new DrawBestApproximationLine(this, new AverageAngleSearch());
         }
 
 
@@ -57,5 +60,8 @@ namespace TechnicalVision.WindowsForms
 
         private void DrawBestApproximationToolStripMenuItem_Click(object sender, EventArgs e) =>
             drawBestApproximationCommand.Execute(CurrentDots);
+
+        private void AvarageAngleExtraDipToolStripMenuItem_Click(object sender, EventArgs e)
+            => drawAvarageApproximationCommand.Execute(CurrentDots);
     }
 }
