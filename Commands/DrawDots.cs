@@ -23,7 +23,6 @@ namespace TechnicalVision.WindowsForms.Commands
 
         public void Execute(List<Dot> dots)
         {
-
             int size = 256 * 4;
             Bitmap image = new Bitmap(size, size);
 
@@ -35,7 +34,7 @@ namespace TechnicalVision.WindowsForms.Commands
                     g.FillEllipse(RandomColors.GetColor(dot.C), dot.X, dot.Y, 10, 10);
                 }
             }
-
+            pictureBox.Image?.Dispose();
             pictureBox.Image = image;
             pictureBox.Invalidate();
         }

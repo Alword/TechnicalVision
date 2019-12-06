@@ -176,7 +176,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Splitter splitter1;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem OpenToolStripMenuItem;
@@ -184,6 +183,7 @@
         private System.Windows.Forms.ToolStripMenuItem SaveAsToolStripMenuItem;
         public System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.ToolStripMenuItem генераторТочекToolStripMenuItem;
+        public System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

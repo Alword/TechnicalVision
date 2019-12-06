@@ -25,7 +25,7 @@ namespace TechnicalVision.WindowsForms
         private readonly ICommand<List<Dot>> drawDotsCommand;
         private readonly ICommand<List<Dot>> saveCsvFile;
         private readonly ICommand<int> generateCommand;
-        public MainWindow()
+        public MainWindow() 
         {
             InitializeComponent();
             saveCsvFile = new SaveCsvCommand();
