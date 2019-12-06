@@ -27,33 +27,32 @@ namespace TechnicalVision.WindowsForms.Commands
 
             using (Graphics g = Graphics.FromImage(MainWindow.ImageBox))
             {
-                
-                var dot1 = GetCoordinate(result,0,0);
-                var dot2 = GetCoordinate(result,255,255);
-                g.DrawLine(Pens.Blue,dot1.Item1,dot1.Item2,dot2.Item1,dot2.Item2);
+
+                var points = GetPoints(result);
+                var dot1 = points.Item1;
+                var dot2 = points.Item2;
+
+                g.DrawLine(Pens.Blue, dot1.X, dot1.Y, dot2.X, dot2.Y);
             }
 
             MainWindow.ImageBox = (Image)MainWindow.ImageBox.Clone();
         }
 
-        private (int, int) GetCoordinate(LineParams line, int x, int y)
+        private (Dot, Dot) GetPoints(LineParams line)
         {
-            if (line.A != 0)
+            Dot start = new Dot(0, 0);
+            Dot endPoint = new Dot(0, 0);
+
+            if (line.B != 0 && line.A != 0)
             {
-                x = (int)(-(line.A * x + line.C) / line.B);
-                return (x, y);
-            }
-            else if (line.B != 0)
-            {
-                y = (int)(-(line.A * x + line.C) / line.B);
-            }
-            else
-            {
-                x = 0;
-                y = 0;
+                start.X = 0;
+                start.Y = (int) line.GetY(start.X);
+
+                endPoint.Y = 0;
+                endPoint.X = (int)line.GetX(endPoint.Y);
             }
 
-            return (x, y);
+            return (start, endPoint);
         }
     }
 }

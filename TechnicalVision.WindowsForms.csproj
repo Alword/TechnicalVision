@@ -70,6 +70,7 @@
     <Compile Include="Abstractions\BaseCommand.cs" />
     <Compile Include="Services\RegressionAnalysis\AverageAngleSearch.cs" />
     <Compile Include="Services\RegressionAnalysis\ExoustiveSearch.cs" />
+    <Compile Include="Services\RegressionAnalysis\MidpointAngleSearch.cs" />
     <Compile Include="Services\SaveCsvToFile.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

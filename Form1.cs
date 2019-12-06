@@ -38,6 +38,7 @@ namespace TechnicalVision.WindowsForms
         private readonly ICommand<List<Dot>> drawDotsCommand;
         private readonly ICommand<List<Dot>> drawBestApproximationCommand;
         private readonly ICommand<List<Dot>> drawAvarageApproximationCommand;
+        private readonly ICommand<List<Dot>> middleDotCommand;
         private readonly ICommand<List<Dot>> saveCsvFile;
         private readonly ICommand<int> generateCommand;
         public MainWindow()
@@ -49,6 +50,7 @@ namespace TechnicalVision.WindowsForms
             drawDotsCommand = new DrawDots(this);
             drawBestApproximationCommand = new DrawBestApproximationLine(this, new ExoustiveSearch());
             drawAvarageApproximationCommand = new DrawBestApproximationLine(this, new AverageAngleSearch());
+            middleDotCommand = new DrawBestApproximationLine(this, new MidpointAngleSearch());
         }
 
 
@@ -63,5 +65,8 @@ namespace TechnicalVision.WindowsForms
 
         private void AvarageAngleExtraDipToolStripMenuItem_Click(object sender, EventArgs e)
             => drawAvarageApproximationCommand.Execute(CurrentDots);
+
+        private void MiddleDotToolStripMenuItem_Click(object sender, EventArgs e)
+            => middleDotCommand.Execute(CurrentDots);
     }
 }

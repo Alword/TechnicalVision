@@ -10,6 +10,13 @@ namespace TechnicalVision.WindowsForms.Models
 {
     public struct Dot
     {
+        public Dot(int x, int y)
+        {
+            X = x;
+            Y = y;
+            C = 0;
+        }
+
         public int X { get; set; }
         public int Y { get; set; }
         public int C { get; set; }
