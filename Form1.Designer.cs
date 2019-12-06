@@ -38,8 +38,6 @@
             this.сохранитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SaveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.генераторТочекToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.сгенерироватьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.сгенерироватьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
@@ -132,26 +130,10 @@
             // 
             // генераторТочекToolStripMenuItem
             // 
-            this.генераторТочекToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.сгенерироватьToolStripMenuItem,
-            this.сгенерироватьToolStripMenuItem1});
             this.генераторТочекToolStripMenuItem.Name = "генераторТочекToolStripMenuItem";
             this.генераторТочекToolStripMenuItem.Size = new System.Drawing.Size(110, 20);
             this.генераторТочекToolStripMenuItem.Text = "Генератор точек";
-            // 
-            // сгенерироватьToolStripMenuItem
-            // 
-            this.сгенерироватьToolStripMenuItem.Name = "сгенерироватьToolStripMenuItem";
-            this.сгенерироватьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.сгенерироватьToolStripMenuItem.Text = "Сгенерировать";
-            this.сгенерироватьToolStripMenuItem.Click += new System.EventHandler(this.GenerateToolStripMenuItem_Click);
-            // 
-            // сгенерироватьToolStripMenuItem1
-            // 
-            this.сгенерироватьToolStripMenuItem1.Name = "сгенерироватьToolStripMenuItem1";
-            this.сгенерироватьToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.сгенерироватьToolStripMenuItem1.Text = "Сгенерировать ...";
-            this.сгенерироватьToolStripMenuItem1.Click += new System.EventHandler(this.GenerateToolStripMenuItem_Click);
+            this.генераторТочекToolStripMenuItem.Click += new System.EventHandler(this.GenerateToolStripMenuItem_Click);
             // 
             // panel2
             // 
@@ -202,8 +184,6 @@
         private System.Windows.Forms.ToolStripMenuItem SaveAsToolStripMenuItem;
         public System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.ToolStripMenuItem генераторТочекToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem сгенерироватьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem сгенерироватьToolStripMenuItem1;
     }
 }
 

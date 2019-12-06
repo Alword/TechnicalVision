@@ -23,10 +23,12 @@ namespace TechnicalVision.WindowsForms
             {
                 currentDots = value;
                 listBox1.DataSource = currentDots;
+                drawDotsCommand.Execute(currentDots);
             }
         }
 
         private readonly ICommand openCsvFile;
+        private readonly ICommand<List<Dot>> drawDotsCommand;
         private readonly ICommand<List<Dot>> saveCsvFile;
         private readonly ICommand<int> generateCommand;
         public MainWindow()
@@ -35,7 +37,7 @@ namespace TechnicalVision.WindowsForms
             saveCsvFile = new SaveCsvCommand();
             openCsvFile = new OpenCsvCommand(this);
             generateCommand = new GenerateDots(this);
-            // drawDots = new Dra
+            drawDotsCommand = new DrawDots(pictureBox1);
         }
 
         private void OpenToolStripMenuItem_Click(object sender, EventArgs e) => openCsvFile.Execute();
