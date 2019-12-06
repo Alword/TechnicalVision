@@ -7,7 +7,7 @@ namespace TechnicalVision.WindowsForms.Services.RegressionAnalysis
 {
     public class ExoustiveSearch : IRegressionAnalysis
     {
-        public (int, double) Search(IReadOnlyList<Dot> dots)
+        public LineParams Search(IReadOnlyList<Dot> dots)
         {
             int minA = 0;
             int minB = 0;
@@ -31,7 +31,7 @@ namespace TechnicalVision.WindowsForms.Services.RegressionAnalysis
                 }
             }
 
-            return (minA, minB);
+            throw new NotImplementedException();
         }
     }
 }

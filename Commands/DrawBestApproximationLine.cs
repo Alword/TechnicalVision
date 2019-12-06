@@ -22,24 +22,38 @@ namespace TechnicalVision.WindowsForms.Commands
 
         public void Execute(List<Dot> dots)
         {
-            //y=a+bx
-            (int, double) result = regressionAnalysis.Search(MainWindow.CurrentDots);
+            LineParams result = regressionAnalysis.Search(MainWindow.CurrentDots);
+
 
             using (Graphics g = Graphics.FromImage(MainWindow.ImageBox))
             {
-                int x1 = 0;
-                int x2 = 255;
-                int y1 = GetCoordinate(x1, result.Item1, result.Item2);
-                int y2 = GetCoordinate(x2, result.Item1, result.Item2);
-                g.DrawLine(Pens.Blue, x1, y1, x2, y2);
+                
+                var dot1 = GetCoordinate(result,0,0);
+                var dot2 = GetCoordinate(result,255,255);
+                g.DrawLine(Pens.Blue,dot1.Item1,dot1.Item2,dot2.Item1,dot2.Item2);
             }
 
             MainWindow.ImageBox = (Image)MainWindow.ImageBox.Clone();
         }
 
-        private int GetCoordinate(int x, int a, double b)
+        private (int, int) GetCoordinate(LineParams line, int x, int y)
         {
-            return (int)(a + b * x);
+            if (line.A != 0)
+            {
+                x = (int)(-(line.A * x + line.C) / line.B);
+                return (x, y);
+            }
+            else if (line.B != 0)
+            {
+                y = (int)(-(line.A * x + line.C) / line.B);
+            }
+            else
+            {
+                x = 0;
+                y = 0;
+            }
+
+            return (x, y);
         }
     }
 }

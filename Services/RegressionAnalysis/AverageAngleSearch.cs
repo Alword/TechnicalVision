@@ -6,26 +6,25 @@ namespace TechnicalVision.WindowsForms.Services.RegressionAnalysis
 {
     public class AverageAngleSearch : IRegressionAnalysis
     {
-        public (int, double) Search(IReadOnlyList<Dot> dots)
+        public LineParams Search(IReadOnlyList<Dot> dots)
         {
-            double SummA = 0;
-            double SummB = 0;
+            LineParams Sum = default;
             int countPairs = 0;
             for(int i = 0; i < dots.Count; i++)
             {
-                Dot dotLeft = dots[i];
+                Dot left = dots[i];
                 for(int j = i + 1; j < dots.Count; j++)
                 {
-                    Dot dotRight = dots[j];
-                    double a = -(dotLeft.Y - dotRight.Y) / (double)(dotRight.X - dotLeft.X);
-                    double b = -(dotLeft.X * dotRight.Y - dotRight.X * dotLeft.Y) / (double)(dotRight.X - dotLeft.X);
-                    SummA += a;
-                    SummB += b;
+                    Dot right = dots[j];
+                    Sum += new LineParams(
+                        left.Y - right.Y,
+                        right.X - left.X,
+                        left.X * right.Y - right.X * left.Y);
                     countPairs++;
                 }
             }
 
-            return ((int)(SummB / countPairs), SummA / countPairs);
+            return Sum / countPairs;
         }
     }
 }

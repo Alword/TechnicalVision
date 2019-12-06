@@ -53,6 +53,7 @@
     <Compile Include="Commands\GenerateDots.cs" />
     <Compile Include="Commands\OpenCsvCommand.cs" />
     <Compile Include="Commands\SaveCsvCommand.cs" />
+    <Compile Include="Models\LineParams.cs" />
     <Compile Include="Services\CsvOpenFileDialog.cs" />
     <Compile Include="Services\CsvSafeFileDialog.cs" />
     <Compile Include="Services\RandomColors.cs" />
