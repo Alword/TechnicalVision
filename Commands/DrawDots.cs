@@ -1,26 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using TechnicalVision.WindowsForms.Abstractions;
 using TechnicalVision.WindowsForms.Models;
 using TechnicalVision.WindowsForms.Services;
 
 namespace TechnicalVision.WindowsForms.Commands
 {
-    public class DrawDots : ICommand<List<Dot>>
+    public class DrawDots : BaseCommand, ICommand<List<Dot>>
     {
-        private readonly List<Dot> dots;
-        private readonly PictureBox pictureBox;
-        public DrawDots(PictureBox pictureBox)
-        {
-            this.pictureBox = pictureBox;
-        }
-
+        public DrawDots(MainWindow mainWindow) : base(mainWindow) { }
         public void Execute(List<Dot> dots)
         {
             int size = 256 * 4;
@@ -34,9 +23,9 @@ namespace TechnicalVision.WindowsForms.Commands
                     g.FillEllipse(RandomColors.GetColor(dot.C), dot.X, dot.Y, 10, 10);
                 }
             }
-            pictureBox.Image?.Dispose();
-            pictureBox.Image = image;
-            pictureBox.Invalidate();
+
+            MainWindow.ImageBox = image;
         }
+
     }
 }

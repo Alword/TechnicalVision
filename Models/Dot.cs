@@ -26,8 +26,8 @@ namespace TechnicalVision.WindowsForms.Models
             }
 
             bool result = int.TryParse(values[0], out int xResult);
-            result &= int.TryParse(values[0], out int yResult);
-            result &= int.TryParse(values[0], out int cResult);
+            result &= int.TryParse(values[1], out int yResult);
+            result &= int.TryParse(values[2], out int cResult);
 
             dot.X = xResult;
             dot.Y = yResult;

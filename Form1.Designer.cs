@@ -40,6 +40,8 @@
             this.генераторТочекToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.построитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.линиюНаилучшегоПриближенияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -91,7 +93,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.файлToolStripMenuItem,
-            this.генераторТочекToolStripMenuItem});
+            this.генераторТочекToolStripMenuItem,
+            this.построитьToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(805, 24);
@@ -152,6 +155,21 @@
             this.panel3.Size = new System.Drawing.Size(805, 450);
             this.panel3.TabIndex = 3;
             // 
+            // построитьToolStripMenuItem
+            // 
+            this.построитьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.линиюНаилучшегоПриближенияToolStripMenuItem});
+            this.построитьToolStripMenuItem.Name = "построитьToolStripMenuItem";
+            this.построитьToolStripMenuItem.Size = new System.Drawing.Size(78, 20);
+            this.построитьToolStripMenuItem.Text = "Построить";
+            // 
+            // линиюНаилучшегоПриближенияToolStripMenuItem
+            // 
+            this.линиюНаилучшегоПриближенияToolStripMenuItem.Name = "линиюНаилучшегоПриближенияToolStripMenuItem";
+            this.линиюНаилучшегоПриближенияToolStripMenuItem.Size = new System.Drawing.Size(265, 22);
+            this.линиюНаилучшегоПриближенияToolStripMenuItem.Text = "Линию наилучшего приближения";
+            this.линиюНаилучшегоПриближенияToolStripMenuItem.Click += new System.EventHandler(this.DrawBestApproximationToolStripMenuItem_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -183,7 +201,9 @@
         private System.Windows.Forms.ToolStripMenuItem SaveAsToolStripMenuItem;
         public System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.ToolStripMenuItem генераторТочекToolStripMenuItem;
-        public System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ToolStripMenuItem построитьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem линиюНаилучшегоПриближенияToolStripMenuItem;
     }
 }
 
