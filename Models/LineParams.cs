@@ -25,7 +25,7 @@ namespace TechnicalVision.WindowsForms.Models
         public LineParams(Dot dot, double a)
             : this(A: Math.Sin(a),
                 B: Math.Cos(a),
-                C: - dot.Y * Math.Cos(a) - dot.X * Math.Sin(a))
+                C: -dot.Y * Math.Cos(a) - dot.X * Math.Sin(a))
         { }
 
         public double A { get => a; set => SetValue(value, B, C); }
@@ -77,20 +77,20 @@ namespace TechnicalVision.WindowsForms.Models
                    Math.Sqrt(Math.Pow(A, 2) + Math.Pow(B, 2));
         }
 
-        public (Dot, Dot) GetDots(Dot begin = default)
+        public (Dot, Dot) GetDots(Dot begin = default, int length = 250)
         {
             Dot dot1 = begin;
-            Dot dot2 = dot1 + 250;
+            Dot dot2 = dot1 + length;
 
             if (Math.Abs(B) > 0.01)
             {
-                dot1.Y = (int) GetY(dot1.X);
-                dot2.Y = (int) GetY(dot2.X);
+                dot1.Y = (int)GetY(dot1.X);
+                dot2.Y = (int)GetY(dot2.X);
             }
             else if (Math.Abs(A) > 0.01)
             {
-                dot1.X = (int) GetX(dot1.Y);
-                dot2.X = (int) GetX(dot2.Y);
+                dot1.X = (int)GetX(dot1.Y);
+                dot2.X = (int)GetX(dot2.Y);
             }
             else
             {

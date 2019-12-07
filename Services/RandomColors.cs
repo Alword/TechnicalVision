@@ -9,6 +9,7 @@ namespace TechnicalVision.WindowsForms.Services
 {
     public static class RandomColors
     {
+        private static readonly Random random = new Random(159753);
         private static readonly Dictionary<int, Color> ColorDictionary;
         private static readonly Dictionary<int, Brush> BrushDictionary;
         static RandomColors()
@@ -30,10 +31,9 @@ namespace TechnicalVision.WindowsForms.Services
 
         private static void Initialize()
         {
-            var random = new Random(159753);
             foreach (int num in Enumerable.Range(0, 256))
             {
-                ColorDictionary.Add(num,Color.FromArgb(random.Next(0, 256), random.Next(0, 256), random.Next(0, 256)));
+                ColorDictionary.Add(num, Color.FromArgb(random.Next(0, 256), random.Next(0, 256), random.Next(0, 256)));
                 BrushDictionary.Add(num, new SolidBrush(ColorDictionary[num]));
             }
         }
@@ -41,6 +41,11 @@ namespace TechnicalVision.WindowsForms.Services
         private static bool IsValid(int num)
         {
             return num >= 0 && num <= 256;
+        }
+
+        public static int RandomColorNum()
+        {
+            return random.Next(0, ColorDictionary.Count);
         }
     }
 }

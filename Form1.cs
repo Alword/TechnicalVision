@@ -34,6 +34,11 @@ namespace TechnicalVision.WindowsForms
             }
         }
 
+        public Point GetDrawableSize()
+        {
+            return new Point(pictureBox1.Size.Width, pictureBox1.Size.Height);
+        }
+
         private readonly ICommand openCsvFile;
         private readonly ICommand<List<Dot>> drawDotsCommand;
         private readonly ICommand<List<Dot>> drawBestApproximationCommand;
@@ -62,7 +67,7 @@ namespace TechnicalVision.WindowsForms
 
         private void GenerateToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            generateCommand.Execute(50);
+            generateCommand.Execute(100);
             drawTargetCommand.Execute(CurrentDots);
         }
 

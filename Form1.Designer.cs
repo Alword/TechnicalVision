@@ -42,9 +42,9 @@
             this.линиюНаилучшегоПриближенияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.линияСреднихExtraDipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.рофланЛинияПоЦентруToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.среднийXИYToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.среднийXИYToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -173,6 +173,13 @@
             this.рофланЛинияПоЦентруToolStripMenuItem.Text = "Подбор угла";
             this.рофланЛинияПоЦентруToolStripMenuItem.Click += new System.EventHandler(this.MiddleDotToolStripMenuItem_Click);
             // 
+            // среднийXИYToolStripMenuItem
+            // 
+            this.среднийXИYToolStripMenuItem.Name = "среднийXИYToolStripMenuItem";
+            this.среднийXИYToolStripMenuItem.Size = new System.Drawing.Size(97, 20);
+            this.среднийXИYToolStripMenuItem.Text = "Средний X и Y";
+            this.среднийXИYToolStripMenuItem.Click += new System.EventHandler(this.TargetXY_ToolStripMenuItem_Click);
+            // 
             // panel2
             // 
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -189,13 +196,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(805, 450);
             this.panel3.TabIndex = 3;
-            // 
-            // среднийXИYToolStripMenuItem
-            // 
-            this.среднийXИYToolStripMenuItem.Name = "среднийXИYToolStripMenuItem";
-            this.среднийXИYToolStripMenuItem.Size = new System.Drawing.Size(97, 20);
-            this.среднийXИYToolStripMenuItem.Text = "Средний X и Y";
-            this.среднийXИYToolStripMenuItem.Click += new System.EventHandler(this.TargetXY_ToolStripMenuItem_Click);
             // 
             // MainWindow
             // 
