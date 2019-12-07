@@ -12,6 +12,7 @@ namespace TechnicalVision.WindowsForms.Commands
         public DrawDots(MainWindow mainWindow) : base(mainWindow) { }
         public void Execute(List<Dot> dots)
         {
+            int dotSize = 10;
             int size = 256 * 4;
             Bitmap image = new Bitmap(size, size);
 
@@ -20,7 +21,7 @@ namespace TechnicalVision.WindowsForms.Commands
                 g.Clear(Color.White);
                 foreach (var dot in dots)
                 {
-                    g.FillEllipse(RandomColors.GetBrush(dot.C), dot.X, dot.Y, 10, 10);
+                    g.FillEllipse(RandomColors.GetBrush(dot.C), dot.X - dotSize / 2, dot.Y - dotSize / 2, dotSize, dotSize);
                 }
             }
 

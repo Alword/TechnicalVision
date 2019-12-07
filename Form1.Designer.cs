@@ -44,6 +44,7 @@
             this.рофланЛинияПоЦентруToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.среднийXИYToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -96,7 +97,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.файлToolStripMenuItem,
             this.генераторТочекToolStripMenuItem,
-            this.построитьToolStripMenuItem});
+            this.построитьToolStripMenuItem,
+            this.среднийXИYToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(805, 24);
@@ -147,8 +149,8 @@
             this.линияСреднихExtraDipToolStripMenuItem,
             this.рофланЛинияПоЦентруToolStripMenuItem});
             this.построитьToolStripMenuItem.Name = "построитьToolStripMenuItem";
-            this.построитьToolStripMenuItem.Size = new System.Drawing.Size(78, 20);
-            this.построитьToolStripMenuItem.Text = "Построить";
+            this.построитьToolStripMenuItem.Size = new System.Drawing.Size(138, 20);
+            this.построитьToolStripMenuItem.Text = "Линии  приближения";
             // 
             // линиюНаилучшегоПриближенияToolStripMenuItem
             // 
@@ -188,6 +190,13 @@
             this.panel3.Size = new System.Drawing.Size(805, 450);
             this.panel3.TabIndex = 3;
             // 
+            // среднийXИYToolStripMenuItem
+            // 
+            this.среднийXИYToolStripMenuItem.Name = "среднийXИYToolStripMenuItem";
+            this.среднийXИYToolStripMenuItem.Size = new System.Drawing.Size(97, 20);
+            this.среднийXИYToolStripMenuItem.Text = "Средний X и Y";
+            this.среднийXИYToolStripMenuItem.Click += new System.EventHandler(this.TargetXY_ToolStripMenuItem_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -224,6 +233,7 @@
         private System.Windows.Forms.ToolStripMenuItem линиюНаилучшегоПриближенияToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem линияСреднихExtraDipToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem рофланЛинияПоЦентруToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem среднийXИYToolStripMenuItem;
     }
 }
 

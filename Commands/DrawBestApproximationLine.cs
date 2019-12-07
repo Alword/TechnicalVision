@@ -36,7 +36,6 @@ namespace TechnicalVision.WindowsForms.Commands
             }
 
             MainWindow.ImageBox = (Image)MainWindow.ImageBox.Clone();
-            await Task.Delay(1);
         }
 
     }

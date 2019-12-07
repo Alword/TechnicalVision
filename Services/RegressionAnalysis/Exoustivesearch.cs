@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using TechnicalVision.WindowsForms.Abstractions;
 using TechnicalVision.WindowsForms.Models;
 
@@ -12,9 +13,8 @@ namespace TechnicalVision.WindowsForms.Services.RegressionAnalysis
             var e = 0.1;
             var minLine = new LineParams(0, 0, 0);
             double min = int.MaxValue;
-            for (double c = -255; c < 255; c++)
+            Parallel.For(-255, 255, (c) =>
             {
-
                 for (double a = -1; a < 1; a += e)
                 {
                     for (double b = -1; b < 1; b += e)
@@ -35,8 +35,7 @@ namespace TechnicalVision.WindowsForms.Services.RegressionAnalysis
                         min = sum;
                     }
                 }
-            }
-
+            });
             return minLine.GetDots();
         }
     }

@@ -50,6 +50,7 @@
     <Compile Include="Abstractions\IRegressionAnalysis.cs" />
     <Compile Include="Commands\DrawBestApproximationLine.cs" />
     <Compile Include="Commands\DrawDots.cs" />
+    <Compile Include="Commands\DrawTargetToMiddlePoint.cs" />
     <Compile Include="Commands\GenerateDots.cs" />
     <Compile Include="Commands\OpenCsvCommand.cs" />
     <Compile Include="Commands\SaveCsvCommand.cs" />

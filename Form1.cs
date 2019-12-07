@@ -14,7 +14,7 @@ namespace TechnicalVision.WindowsForms
         private List<Dot> currentDots;
         public List<Dot> CurrentDots
         {
-            get => currentDots;
+            get => currentDots ?? (currentDots = new List<Dot>(0));
             set
             {
                 currentDots = value;
@@ -40,6 +40,7 @@ namespace TechnicalVision.WindowsForms
         private readonly ICommand<List<Dot>> drawAvarageApproximationCommand;
         private readonly ICommand<List<Dot>> middleDotCommand;
         private readonly ICommand<List<Dot>> saveCsvFile;
+        private readonly ICommand<List<Dot>> drawTargetCommand;
         private readonly ICommand<int> generateCommand;
         public MainWindow()
         {
@@ -51,6 +52,7 @@ namespace TechnicalVision.WindowsForms
             drawBestApproximationCommand = new DrawBestApproximationLine(this, new ExoustiveSearch());
             drawAvarageApproximationCommand = new DrawBestApproximationLine(this, new AverageAngleSearch());
             middleDotCommand = new DrawBestApproximationLine(this, new MidpointAngleSearch());
+            drawTargetCommand = new DrawTargetToMiddlePoint(this);
         }
 
 
@@ -58,7 +60,11 @@ namespace TechnicalVision.WindowsForms
 
         private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e) => saveCsvFile.Execute(CurrentDots);
 
-        private void GenerateToolStripMenuItem_Click(object sender, EventArgs e) => generateCommand.Execute(50);
+        private void GenerateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            generateCommand.Execute(50);
+            drawTargetCommand.Execute(CurrentDots);
+        }
 
         private void DrawBestApproximationToolStripMenuItem_Click(object sender, EventArgs e) =>
             drawBestApproximationCommand.Execute(CurrentDots);
@@ -68,5 +74,8 @@ namespace TechnicalVision.WindowsForms
 
         private void MiddleDotToolStripMenuItem_Click(object sender, EventArgs e)
             => middleDotCommand.Execute(CurrentDots);
+
+        private void TargetXY_ToolStripMenuItem_Click(object sender, EventArgs e)
+            => drawTargetCommand.Execute(CurrentDots);
     }
 }
