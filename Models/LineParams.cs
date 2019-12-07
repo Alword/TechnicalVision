@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 
 namespace TechnicalVision.WindowsForms.Models
 {
@@ -23,14 +22,29 @@ namespace TechnicalVision.WindowsForms.Models
         }
 
         public LineParams(Dot dot, double a)
-            : this(A: Math.Sin(a),
-                B: Math.Cos(a),
-                C: -dot.Y * Math.Cos(a) - dot.X * Math.Sin(a))
-        { }
+            : this(Math.Sin(a),
+                Math.Cos(a),
+                -dot.Y * Math.Cos(a) - dot.X * Math.Sin(a))
+        {
+        }
 
-        public double A { get => a; set => SetValue(value, B, C); }
-        public double B { get => b; set => SetValue(A, value, C); }
-        public double C { get => c; set => SetValue(A, value, C); }
+        public double A
+        {
+            get => a;
+            set => SetValue(value, B, C);
+        }
+
+        public double B
+        {
+            get => b;
+            set => SetValue(A, value, C);
+        }
+
+        public double C
+        {
+            get => c;
+            set => SetValue(A, value, C);
+        }
 
         private void SetValue(double A, double B, double C)
         {
@@ -47,26 +61,38 @@ namespace TechnicalVision.WindowsForms.Models
         }
 
         public double GetX(double y)
-            => -(B * y + C) / A;
+        {
+            return -(B * y + C) / A;
+        }
 
         public double GetY(double x)
-            => -(A * x + C) / B;
+        {
+            return -(A * x + C) / B;
+        }
 
-        public static LineParams operator +(LineParams f, LineParams s) => new LineParams(f.A + s.A, f.B + s.B, f.C + s.C);
+        public static LineParams operator +(LineParams f, LineParams s)
+        {
+            return new LineParams(f.A + s.A, f.B + s.B, f.C + s.C);
+        }
 
-        public static LineParams operator /(LineParams f, int s) => new LineParams(f.A / s, f.B / s, f.C / s);
+        public static LineParams operator /(LineParams f, int s)
+        {
+            return new LineParams(f.A / s, f.B / s, f.C / s);
+        }
 
         public static LineParams[] GetBisector(LineParams l, LineParams r)
         {
-            return new LineParams[]{ new LineParams(
-                A: l.A * Math.Sqrt(r.A*r.A + r.B*r.B) - r.A * Math.Sqrt(l.A*l.A + l.B*l.B),
-                B: l.B * Math.Sqrt(r.A*r.A + r.B*r.B) - r.B * Math.Sqrt(l.A*l.A + l.B*l.B),
-                C: l.C * Math.Sqrt(r.A*r.A + r.B*r.B) - r.C * Math.Sqrt(l.A*l.A + l.B*l.B)
+            return new[]
+            {
+                new LineParams(
+                    l.A * Math.Sqrt(r.A * r.A + r.B * r.B) - r.A * Math.Sqrt(l.A * l.A + l.B * l.B),
+                    l.B * Math.Sqrt(r.A * r.A + r.B * r.B) - r.B * Math.Sqrt(l.A * l.A + l.B * l.B),
+                    l.C * Math.Sqrt(r.A * r.A + r.B * r.B) - r.C * Math.Sqrt(l.A * l.A + l.B * l.B)
                 ),
                 new LineParams(
-                    A: l.A * Math.Sqrt(r.A*r.A + r.B*r.B) + r.A * Math.Sqrt(l.A*l.A + l.B*l.B),
-                    B: l.B * Math.Sqrt(r.A*r.A + r.B*r.B) + r.B * Math.Sqrt(l.A*l.A + l.B*l.B),
-                    C: l.C * Math.Sqrt(r.A*r.A + r.B*r.B) + r.C * Math.Sqrt(l.A*l.A + l.B*l.B)
+                    l.A * Math.Sqrt(r.A * r.A + r.B * r.B) + r.A * Math.Sqrt(l.A * l.A + l.B * l.B),
+                    l.B * Math.Sqrt(r.A * r.A + r.B * r.B) + r.B * Math.Sqrt(l.A * l.A + l.B * l.B),
+                    l.C * Math.Sqrt(r.A * r.A + r.B * r.B) + r.C * Math.Sqrt(l.A * l.A + l.B * l.B)
                 )
             };
         }
@@ -79,23 +105,20 @@ namespace TechnicalVision.WindowsForms.Models
 
         public (Dot, Dot) GetDots(Dot begin = default, Dot end = default)
         {
-            if (end.X == 0)
-            {
-                end = new Dot(255, 255);
-            }
+            if (end.X == 0) end = new Dot(255, 255);
 
             Dot dot1 = begin;
             Dot dot2 = end;
 
             if (Math.Abs(B) > 0.01)
             {
-                dot1.Y = (int)GetY(dot1.X);
-                dot2.Y = (int)GetY(dot2.X);
+                dot1.Y = (int) GetY(dot1.X);
+                dot2.Y = (int) GetY(dot2.X);
             }
             else if (Math.Abs(A) > 0.01)
             {
-                dot1.X = (int)GetX(dot1.Y);
-                dot2.X = (int)GetX(dot2.Y);
+                dot1.X = (int) GetX(dot1.Y);
+                dot2.X = (int) GetX(dot2.Y);
             }
             else
             {
@@ -107,7 +130,7 @@ namespace TechnicalVision.WindowsForms.Models
 
         public static int Clamp(int value, int min, int max)
         {
-            return (value < min) ? min : (value > max) ? max : value;
+            return value < min ? min : value > max ? max : value;
         }
     }
 }

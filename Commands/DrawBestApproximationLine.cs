@@ -17,7 +17,7 @@ namespace TechnicalVision.WindowsForms.Commands
         public async void Execute(List<Dot> dots)
         {
             Point end = MainWindow.GetDrawableSize();
-            Dot endDot = new Dot(end.X, end.Y);
+            var endDot = new Dot(end.X, end.Y);
 
             (Dot, Dot) besLineParams = regressionAnalysis
                 .Search(MainWindow.CurrentDots)
@@ -26,17 +26,14 @@ namespace TechnicalVision.WindowsForms.Commands
 
             using (Graphics g = Graphics.FromImage(MainWindow.ImageBox))
             {
-
-                var points = besLineParams;
-                var dot1 = points.Item1;
-                var dot2 = points.Item2;
+                (Dot, Dot) points = besLineParams;
+                Dot dot1 = points.Item1;
+                Dot dot2 = points.Item2;
 
                 g.DrawLine(Pens.Blue, dot1.X, dot1.Y, dot2.X, dot2.Y);
             }
 
-            MainWindow.ImageBox = (Image)MainWindow.ImageBox.Clone();
+            MainWindow.ImageBox = (Image) MainWindow.ImageBox.Clone();
         }
-
     }
 }
-

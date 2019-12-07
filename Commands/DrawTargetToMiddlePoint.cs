@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TechnicalVision.WindowsForms.Abstractions;
 using TechnicalVision.WindowsForms.Models;
 
@@ -28,7 +25,7 @@ namespace TechnicalVision.WindowsForms.Commands
                 g.DrawLine(Pens.BlueViolet, x, 0, x, screeSize.Y);
             }
 
-            MainWindow.ImageBox = (Image)MainWindow.ImageBox.Clone();
+            MainWindow.ImageBox = (Image) MainWindow.ImageBox.Clone();
         }
     }
 }

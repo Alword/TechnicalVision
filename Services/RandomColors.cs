@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TechnicalVision.WindowsForms.Services
 {
@@ -12,6 +10,7 @@ namespace TechnicalVision.WindowsForms.Services
         private static readonly Random random = new Random(159753);
         private static readonly Dictionary<int, Color> ColorDictionary;
         private static readonly Dictionary<int, Brush> BrushDictionary;
+
         static RandomColors()
         {
             ColorDictionary = new Dictionary<int, Color>();

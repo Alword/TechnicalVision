@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using TechnicalVision.WindowsForms.Abstractions;
 using TechnicalVision.WindowsForms.Models;
 
 namespace TechnicalVision.WindowsForms.Services
@@ -31,6 +29,5 @@ namespace TechnicalVision.WindowsForms.Services
 
             return dots;
         }
-
     }
 }

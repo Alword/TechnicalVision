@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Markup;
-using TechnicalVision.WindowsForms.Abstractions;
-
-namespace TechnicalVision.WindowsForms.Models
+﻿namespace TechnicalVision.WindowsForms.Models
 {
     public struct Dot
     {
@@ -27,10 +19,7 @@ namespace TechnicalVision.WindowsForms.Models
 
             dot = new Dot();
 
-            if (values.Length != 3)
-            {
-                return false;
-            }
+            if (values.Length != 3) return false;
 
             bool result = int.TryParse(values[0], out int xResult);
             result &= int.TryParse(values[1], out int yResult);
@@ -49,9 +38,13 @@ namespace TechnicalVision.WindowsForms.Models
         }
 
         public static Dot operator +(Dot l, Dot r)
-            => new Dot(l.X + r.X, l.Y + r.Y);
+        {
+            return new Dot(l.X + r.X, l.Y + r.Y);
+        }
 
         public static Dot operator +(Dot l, int r)
-            => new Dot(l.X + r, l.Y + r);
+        {
+            return new Dot(l.X + r, l.Y + r);
+        }
     }
 }

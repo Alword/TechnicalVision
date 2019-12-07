@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TechnicalVision.WindowsForms.Abstractions;
 using TechnicalVision.WindowsForms.Models;
 
@@ -10,11 +9,11 @@ namespace TechnicalVision.WindowsForms.Services.RegressionAnalysis
         public LineParams Search(IReadOnlyList<Dot> dots)
         {
             LineParams Sum = default;
-            int countPairs = 0;
-            for(int i = 0; i < dots.Count; i++)
+            var countPairs = 0;
+            for (var i = 0; i < dots.Count; i++)
             {
                 Dot left = dots[i];
-                for(int j = i + 1; j < dots.Count; j++)
+                for (int j = i + 1; j < dots.Count; j++)
                 {
                     Dot right = dots[j];
                     Sum += new LineParams(
@@ -25,7 +24,7 @@ namespace TechnicalVision.WindowsForms.Services.RegressionAnalysis
                 }
             }
 
-            return (Sum / countPairs);
+            return Sum / countPairs;
         }
     }
 }

@@ -7,12 +7,12 @@ namespace TechnicalVision.WindowsForms.Services
 {
     public class SaveCsvToFile
     {
-        public string FilePath { get; }
-
         public SaveCsvToFile(string filePath)
         {
-            this.FilePath = filePath;
+            FilePath = filePath;
         }
+
+        public string FilePath { get; }
 
         public void TrySaveToFile(List<Dot> dots)
         {

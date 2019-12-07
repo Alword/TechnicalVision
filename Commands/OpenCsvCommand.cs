@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using TechnicalVision.WindowsForms.Abstractions;
 using TechnicalVision.WindowsForms.Models;
 using TechnicalVision.WindowsForms.Services;
@@ -13,7 +9,6 @@ namespace TechnicalVision.WindowsForms.Commands
     {
         public OpenCsvCommand(MainWindow mainWindow) : base(mainWindow)
         {
-
         }
 
 
