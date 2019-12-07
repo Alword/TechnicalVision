@@ -7,8 +7,8 @@ using TechnicalVision.WindowsForms.Models;
 
 namespace TechnicalVision.WindowsForms.Abstractions
 {
-    interface IRadialClusterAnalyzer
+    public interface IRadialClusterAnalyzer
     {
-        List<Cluster> SearchClusters(double radius, List<Dot> dots);
+        IEnumerator<Cluster> SearchClusters(double radius, List<Dot> dots);
     }
 }

@@ -9,7 +9,7 @@ namespace TechnicalVision.WindowsForms.Models
     public struct Cluster
     {
         public int Number { get; set; }
-        public int Radius { get; set; }
+        public double Radius { get; set; }
         public Dot RadiusDot { get; set; }
         public List<Dot> Dots { get; set; }
     }

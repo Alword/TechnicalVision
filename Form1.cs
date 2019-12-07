@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using TechnicalVision.WindowsForms.Abstractions;
 using TechnicalVision.WindowsForms.Commands;
 using TechnicalVision.WindowsForms.Models;
+using TechnicalVision.WindowsForms.Services.ClusterAnalyzers;
 using TechnicalVision.WindowsForms.Services.RegressionAnalysis;
 
 namespace TechnicalVision.WindowsForms
@@ -20,7 +21,7 @@ namespace TechnicalVision.WindowsForms
 
         private readonly ICommand<List<Dot>> drawTargetCommand;
 
-        private readonly ICommand<int> exhaustiveClusterAnalyzerCommand;
+        private readonly ICommand<List<Dot>> exhaustiveClusterAnalyzerCommand;
 
 
         private readonly ICommand openCsvFile;
@@ -38,7 +39,7 @@ namespace TechnicalVision.WindowsForms
             drawAverageApproximationCommand = new DrawBestApproximationLine(this, new AverageAngleSearch());
             middleDotCommand = new DrawBestApproximationLine(this, new MidpointAngleSearch());
             drawTargetCommand = new DrawTargetToMiddlePoint(this);
-            exhaustiveClusterAnalyzerCommand = new DrawClustersCommand(this);
+            exhaustiveClusterAnalyzerCommand = new DrawClustersCommand(this,new ExhaustiveClusterAnalyzer());
         }
 
         public List<Dot> CurrentDots
@@ -108,7 +109,8 @@ namespace TechnicalVision.WindowsForms
 
         private void ExhaustiveAnalyzerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            exhaustiveClusterAnalyzerCommand.Execute(12);
+            drawDotsCommand.Execute(CurrentDots);
+            exhaustiveClusterAnalyzerCommand.Execute(CurrentDots);
         }
     }
 }

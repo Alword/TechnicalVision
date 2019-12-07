@@ -77,6 +77,13 @@
     <Compile Include="Services\RegressionAnalysis\ExhaustiveSearch.cs" />
     <Compile Include="Services\RegressionAnalysis\MidpointAngleSearch.cs" />
     <Compile Include="Services\SaveCsvToFile.cs" />
+    <Compile Include="Views\UserPrompter.cs" />
+    <Compile Include="Views\PromptView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\PromptView.Designer.cs">
+      <DependentUpon>PromptView.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -89,6 +96,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\PromptView.resx">
+      <DependentUpon>PromptView.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -102,8 +112,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

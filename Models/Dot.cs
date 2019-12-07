@@ -1,4 +1,6 @@
-﻿namespace TechnicalVision.WindowsForms.Models
+﻿using System;
+
+namespace TechnicalVision.WindowsForms.Models
 {
     public struct Dot
     {
@@ -32,6 +34,11 @@
             return result;
         }
 
+        public double GetDistance(Dot dot)
+        {
+            return Math.Sqrt(Math.Pow(X - dot.X, 2) + Math.Pow(Y - dot.Y, 2));
+        }
+
         public override string ToString()
         {
             return $"{X},{Y},{C}";
@@ -40,6 +47,11 @@
         public static Dot operator +(Dot l, Dot r)
         {
             return new Dot(l.X + r.X, l.Y + r.Y);
+        }
+
+        public static Dot operator /(Dot l, int n)
+        {
+            return new Dot(l.X / n, l.Y / n);
         }
 
         public static Dot operator +(Dot l, int r)
