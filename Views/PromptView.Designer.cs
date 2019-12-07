@@ -48,6 +48,7 @@
             this.textBox.Name = "textBox";
             this.textBox.Size = new System.Drawing.Size(286, 20);
             this.textBox.TabIndex = 1;
+            this.textBox.Text = "20";
             // 
             // textLabel
             // 

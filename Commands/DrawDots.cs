@@ -8,7 +8,7 @@ namespace TechnicalVision.WindowsForms.Commands
 {
     public class DrawDots : BaseCommand, ICommand<List<Dot>>
     {
-        private const int DOT_SIZE = 10;
+        public const int DOT_RADIUS = 4;
 
         public DrawDots(MainWindow mainWindow) : base(mainWindow)
         {
@@ -23,8 +23,8 @@ namespace TechnicalVision.WindowsForms.Commands
             {
                 g.Clear(Color.White);
                 foreach (Dot dot in dots)
-                    g.FillEllipse(RandomColors.GetBrush(dot.C), dot.X - DOT_SIZE / 2, dot.Y - DOT_SIZE / 2, DOT_SIZE,
-                        DOT_SIZE);
+                    g.FillEllipse(RandomColors.GetBrush(dot.C), dot.X - DOT_RADIUS, dot.Y - DOT_RADIUS, 2 * DOT_RADIUS,
+                        2 * DOT_RADIUS);
             }
 
             MainWindow.ImageBox = image;

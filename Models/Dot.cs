@@ -4,12 +4,13 @@ namespace TechnicalVision.WindowsForms.Models
 {
     public struct Dot
     {
-        public Dot(int x, int y)
+        public Dot(int x, int y, int c = 0)
         {
             X = x;
             Y = y;
-            C = 0;
+            C = c;
         }
+
 
         public int X { get; set; }
         public int Y { get; set; }

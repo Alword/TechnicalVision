@@ -13,10 +13,12 @@ namespace TechnicalVision.WindowsForms.Commands
 {
     public class DrawClustersCommand : BaseCommand, ICommand<List<Dot>>
     {
+        private readonly ICommand<List<Dot>> drawDotsCommand;
         private readonly IRadialClusterAnalyzer analyzer;
         public DrawClustersCommand(MainWindow mainWindow, IRadialClusterAnalyzer analyzer) : base(mainWindow)
         {
             this.analyzer = analyzer;
+            drawDotsCommand = new DrawDots(mainWindow);
         }
 
         public void Execute(List<Dot> dots)
@@ -24,23 +26,21 @@ namespace TechnicalVision.WindowsForms.Commands
             string promptValue = UserPrompter.ShowDialog("Введите радиус кластера", "Введите радиус кластера");
             if (int.TryParse(promptValue, out int radius))
             {
-                var enumerator = analyzer.SearchClusters(radius, dots);
-                while (enumerator.MoveNext())
-                {
 
-                    var cluster = enumerator.Current;
-                    // draw
-                    using (Graphics g = Graphics.FromImage(MainWindow.ImageBox))
+                List<Cluster> clusterList = analyzer.SearchClusters(radius, dots);
+
+                using (Graphics g = Graphics.FromImage(MainWindow.ImageBox))
+                {
+                    foreach (var cluster in clusterList)
                     {
                         var pen = new Pen(RandomColors.GetColor(cluster.Number));
                         int x = (int)(cluster.RadiusDot.X - cluster.Radius);
                         int y = (int)(cluster.RadiusDot.Y - cluster.Radius);
-                        int size = (int)radius * 2;
+                        int size = (int)cluster.Radius * 2;
                         g.DrawEllipse(pen, x, y, size, size);
                     }
-
-                    MainWindow.ImageBox = (Image)MainWindow.ImageBox.Clone();
                 }
+                MainWindow.ImageBox = (Image)MainWindow.ImageBox.Clone();
             }
         }
     }

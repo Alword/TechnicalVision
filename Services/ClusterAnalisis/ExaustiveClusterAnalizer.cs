@@ -10,29 +10,29 @@ namespace TechnicalVision.WindowsForms.Services.ClusterAnalyzers
 {
     public class ExhaustiveClusterAnalyzer : IRadialClusterAnalyzer
     {
-        public IEnumerator<Cluster> SearchClusters(double radius, List<Dot> dots)
+        public List<Cluster> SearchClusters(double radius, List<Dot> dots)
         {
             int i = 0;
             double range = 2 * radius;
-            List<Dot> dotsToCluster = dots;
-            List<Cluster> cliList = new List<Cluster>(dots.Count);
+            Dot[] copy = new Dot[dots.Count];
+            dots.CopyTo(copy);
+            var dotsToCluster = copy.ToList();
+            List<Cluster> clusters = new List<Cluster>(dots.Count);
 
             while (dotsToCluster.Count > 0)
             {
-                Dot dot = dotsToCluster.First();
-                dotsToCluster.Remove(dot);
-                var dotsInRange = dots
-                    .Where(d => d.GetDistance(dot) <= range)
-                    .OrderBy(d => d.GetDistance(dot))
+                Dot middlePoint = dotsToCluster.First();
+                var dotsInRange = dotsToCluster
+                    .Where(d => d.GetDistance(middlePoint) <= range)
+                    .OrderBy(d => d.GetDistance(middlePoint))
                     .ToList();
 
-                List<Dot> dotsInCluster = new List<Dot>(dotsInRange.Count()) { dot };
-                Dot middlePoint = dot;
+                List<Dot> dotsInCluster = new List<Dot>(dotsInRange.Count());
                 if (dotsInRange.Any())
                 {
                     foreach (var inRangeDot in dotsInRange)
                     {
-                        var displaced = (middlePoint + inRangeDot) / 2;
+                        Dot displaced = (middlePoint + inRangeDot) / 2;
                         dotsInCluster.Add(inRangeDot);
                         if (dotsInCluster.Any(d => d.GetDistance(displaced) >= radius))
                         {
@@ -45,18 +45,18 @@ namespace TechnicalVision.WindowsForms.Services.ClusterAnalyzers
                         }
                     }
                 }
-
-                cliList.Add(new Cluster()
+                clusters.Add(new Cluster()
                 {
                     Dots = dotsInCluster,
-                    Number = i++,
+                    Number = i++ % 255,
                     Radius = radius,
                     RadiusDot = middlePoint
                 });
-                yield return cliList.Last();
+
                 dotsToCluster = dotsToCluster.Except(dotsInCluster).ToList();
             }
-            yield break;
+
+            return clusters;
         }
     }
 }
