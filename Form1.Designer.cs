@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OpenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,6 +45,8 @@
             this.среднийXИYToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.разбитьНаКластерыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.подборПозицийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -64,6 +66,16 @@
             this.panel1.Size = new System.Drawing.Size(805, 450);
             this.panel1.TabIndex = 1;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 24);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(628, 426);
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
             // splitter1
             // 
             this.splitter1.Dock = System.Windows.Forms.DockStyle.Right;
@@ -82,23 +94,14 @@
             this.listBox1.Size = new System.Drawing.Size(174, 426);
             this.listBox1.TabIndex = 5;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 24);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(628, 426);
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
-            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.файлToolStripMenuItem,
             this.генераторТочекToolStripMenuItem,
             this.построитьToolStripMenuItem,
-            this.среднийXИYToolStripMenuItem});
+            this.среднийXИYToolStripMenuItem,
+            this.разбитьНаКластерыToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(805, 24);
@@ -197,6 +200,21 @@
             this.panel3.Size = new System.Drawing.Size(805, 450);
             this.panel3.TabIndex = 3;
             // 
+            // разбитьНаКластерыToolStripMenuItem
+            // 
+            this.разбитьНаКластерыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.подборПозицийToolStripMenuItem});
+            this.разбитьНаКластерыToolStripMenuItem.Name = "разбитьНаКластерыToolStripMenuItem";
+            this.разбитьНаКластерыToolStripMenuItem.Size = new System.Drawing.Size(113, 20);
+            this.разбитьНаКластерыToolStripMenuItem.Text = "Поиск кластеров";
+            // 
+            // подборПозицийToolStripMenuItem
+            // 
+            this.подборПозицийToolStripMenuItem.Name = "подборПозицийToolStripMenuItem";
+            this.подборПозицийToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.подборПозицийToolStripMenuItem.Text = "Подбор позиций";
+            this.подборПозицийToolStripMenuItem.Click += new System.EventHandler(this.ExhaustiveAnalyzerToolStripMenuItem_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -234,6 +252,8 @@
         private System.Windows.Forms.ToolStripMenuItem линияСреднихExtraDipToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem рофланЛинияПоЦентруToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem среднийXИYToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem разбитьНаКластерыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem подборПозицийToolStripMenuItem;
     }
 }
 

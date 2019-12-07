@@ -11,12 +11,17 @@ namespace TechnicalVision.WindowsForms
 {
     public partial class MainWindow : Form
     {
-        private readonly ICommand<List<Dot>> drawAvarageApproximationCommand;
-        private readonly ICommand<List<Dot>> drawBestApproximationCommand;
-        private readonly ICommand<List<Dot>> drawDotsCommand;
-        private readonly ICommand<List<Dot>> drawTargetCommand;
         private readonly ICommand<int> generateCommand;
+        private readonly ICommand<List<Dot>> drawDotsCommand;
+
+        private readonly ICommand<List<Dot>> drawAverageApproximationCommand;
+        private readonly ICommand<List<Dot>> drawBestApproximationCommand;
         private readonly ICommand<List<Dot>> middleDotCommand;
+
+        private readonly ICommand<List<Dot>> drawTargetCommand;
+
+        private readonly ICommand<int> exhaustiveClusterAnalyzerCommand;
+
 
         private readonly ICommand openCsvFile;
         private readonly ICommand<List<Dot>> saveCsvFile;
@@ -29,10 +34,11 @@ namespace TechnicalVision.WindowsForms
             openCsvFile = new OpenCsvCommand(this);
             generateCommand = new GenerateDots(this);
             drawDotsCommand = new DrawDots(this);
-            drawBestApproximationCommand = new DrawBestApproximationLine(this, new ExoustiveSearch());
-            drawAvarageApproximationCommand = new DrawBestApproximationLine(this, new AverageAngleSearch());
+            drawBestApproximationCommand = new DrawBestApproximationLine(this, new ExhaustiveSearch());
+            drawAverageApproximationCommand = new DrawBestApproximationLine(this, new AverageAngleSearch());
             middleDotCommand = new DrawBestApproximationLine(this, new MidpointAngleSearch());
             drawTargetCommand = new DrawTargetToMiddlePoint(this);
+            exhaustiveClusterAnalyzerCommand = new DrawClustersCommand(this);
         }
 
         public List<Dot> CurrentDots
@@ -87,7 +93,7 @@ namespace TechnicalVision.WindowsForms
 
         private void AvarageAngleExtraDipToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            drawAvarageApproximationCommand.Execute(CurrentDots);
+            drawAverageApproximationCommand.Execute(CurrentDots);
         }
 
         private void MiddleDotToolStripMenuItem_Click(object sender, EventArgs e)
@@ -98,6 +104,11 @@ namespace TechnicalVision.WindowsForms
         private void TargetXY_ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             drawTargetCommand.Execute(CurrentDots);
+        }
+
+        private void ExhaustiveAnalyzerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            exhaustiveClusterAnalyzerCommand.Execute(12);
         }
     }
 }

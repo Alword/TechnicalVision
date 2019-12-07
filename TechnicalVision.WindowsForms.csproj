@@ -47,14 +47,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstractions\ICommand.cs" />
+    <Compile Include="Abstractions\IRadialClusterAnalyzer.cs" />
     <Compile Include="Abstractions\IRegressionAnalysis.cs" />
     <Compile Include="Commands\DrawBestApproximationLine.cs" />
+    <Compile Include="Commands\DrawClustersCommand.cs" />
     <Compile Include="Commands\DrawDots.cs" />
     <Compile Include="Commands\DrawTargetToMiddlePoint.cs" />
     <Compile Include="Commands\GenerateDots.cs" />
     <Compile Include="Commands\OpenCsvCommand.cs" />
     <Compile Include="Commands\SaveCsvCommand.cs" />
+    <Compile Include="Models\Cluster.cs" />
     <Compile Include="Models\LineParams.cs" />
+    <Compile Include="Services\ClusterAnalisis\ExaustiveClusterAnalizer.cs" />
     <Compile Include="Services\CsvOpenFileDialog.cs" />
     <Compile Include="Services\CsvSafeFileDialog.cs" />
     <Compile Include="Services\RandomColors.cs" />
@@ -70,7 +74,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Abstractions\BaseCommand.cs" />
     <Compile Include="Services\RegressionAnalysis\AverageAngleSearch.cs" />
-    <Compile Include="Services\RegressionAnalysis\ExoustiveSearch.cs" />
+    <Compile Include="Services\RegressionAnalysis\ExhaustiveSearch.cs" />
     <Compile Include="Services\RegressionAnalysis\MidpointAngleSearch.cs" />
     <Compile Include="Services\SaveCsvToFile.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -99,7 +103,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controllers\" />
     <Folder Include="Views\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

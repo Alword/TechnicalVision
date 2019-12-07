@@ -5,7 +5,7 @@ using TechnicalVision.WindowsForms.Models;
 
 namespace TechnicalVision.WindowsForms.Services.RegressionAnalysis
 {
-    public class ExoustiveSearch : IRegressionAnalysis
+    public class ExhaustiveSearch : IRegressionAnalysis
     {
         public LineParams Search(IReadOnlyList<Dot> dots)
         {
