@@ -27,16 +27,16 @@ namespace TechnicalVision.WindowsForms.Commands
             if (int.TryParse(promptValue, out int radius))
             {
 
-                List<Cluster> clusterList = analyzer.SearchClusters(radius, dots);
+                List<Cluster> clusterList = analyzer.SearchClusters(radius - DrawDots.DOT_RADIUS, dots);
 
                 using (Graphics g = Graphics.FromImage(MainWindow.ImageBox))
                 {
                     foreach (var cluster in clusterList)
                     {
                         var pen = new Pen(RandomColors.GetColor(cluster.Number));
-                        int x = (int)(cluster.RadiusDot.X - cluster.Radius);
-                        int y = (int)(cluster.RadiusDot.Y - cluster.Radius);
-                        int size = (int)cluster.Radius * 2;
+                        int x = (int)(cluster.RadiusDot.X - cluster.Radius - DrawDots.DOT_RADIUS);
+                        int y = (int)(cluster.RadiusDot.Y - cluster.Radius - DrawDots.DOT_RADIUS);
+                        int size = (int)(cluster.Radius + DrawDots.DOT_RADIUS) * 2;
                         g.DrawEllipse(pen, x, y, size, size);
                     }
                 }
