@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 
 namespace TechnicalVision.WindowsForms.Models
 {
@@ -24,7 +25,8 @@ namespace TechnicalVision.WindowsForms.Models
         public LineParams(Dot dot, double a)
             : this(A: Math.Sin(a),
                 B: Math.Cos(a),
-                C: dot.Y * Math.Cos(a) - dot.X * Math.Sin(a)) { }
+                C: - dot.Y * Math.Cos(a) - dot.X * Math.Sin(a))
+        { }
 
         public double A { get => a; set => SetValue(value, B, C); }
         public double B { get => b; set => SetValue(A, value, C); }
@@ -73,6 +75,34 @@ namespace TechnicalVision.WindowsForms.Models
         {
             return Math.Abs(A * dot.X + B + dot.Y + C) /
                    Math.Sqrt(Math.Pow(A, 2) + Math.Pow(B, 2));
+        }
+
+        public (Dot, Dot) GetDots(Dot begin = default)
+        {
+            Dot dot1 = begin;
+            Dot dot2 = dot1 + 250;
+
+            if (Math.Abs(B) > 0.01)
+            {
+                dot1.Y = (int) GetY(dot1.X);
+                dot2.Y = (int) GetY(dot2.X);
+            }
+            else if (Math.Abs(A) > 0.01)
+            {
+                dot1.X = (int) GetX(dot1.Y);
+                dot2.X = (int) GetX(dot2.Y);
+            }
+            else
+            {
+                //throw new NotSupportedException();
+            }
+
+            return (dot1, dot2);
+        }
+
+        public static int Clamp(int value, int min, int max)
+        {
+            return (value < min) ? min : (value > max) ? max : value;
         }
     }
 }

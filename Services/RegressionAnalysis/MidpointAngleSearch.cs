@@ -10,15 +10,15 @@ namespace TechnicalVision.WindowsForms.Services.RegressionAnalysis
 {
     public class MidpointAngleSearch : IRegressionAnalysis
     {
-        public LineParams Search(IReadOnlyList<Dot> dots)
+        public (Dot, Dot) Search(IReadOnlyList<Dot> dots)
         {
             double minSum = int.MaxValue;
             int middleX = dots.Sum(d => d.X) / dots.Count;
             int middleY = dots.Sum(d => d.Y) / dots.Count;
             Dot middleDot = new Dot(middleX, middleY);
-            LineParams besLineParams = new LineParams(middleDot, 0);
+            LineParams besLineParams = default;
 
-            for (double a = 0; a < Math.PI; a += Math.PI / 100000)
+            for (double a = 0; a < Math.PI; a += Math.PI / 10000)
             {
                 LineParams line = new LineParams(middleDot, a);
                 double sum = dots.Sum(dot => line.GetDistance(dot));
@@ -31,7 +31,7 @@ namespace TechnicalVision.WindowsForms.Services.RegressionAnalysis
                 }
             }
 
-            return besLineParams;
+            return besLineParams.GetDots();
         }
     }
 }

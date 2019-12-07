@@ -20,39 +20,49 @@ namespace TechnicalVision.WindowsForms.Commands
             regressionAnalysis = regression;
         }
 
-        public void Execute(List<Dot> dots)
+        public async void Execute(List<Dot> dots)
         {
-            LineParams result = regressionAnalysis.Search(MainWindow.CurrentDots);
+            //(Dot,Dot) result = regressionAnalysis.Search(MainWindow.CurrentDots);
 
 
-            using (Graphics g = Graphics.FromImage(MainWindow.ImageBox))
+            double minSum = int.MaxValue;
+            int middleX = dots.Sum(d => d.X) / dots.Count;
+            int middleY = dots.Sum(d => d.Y) / dots.Count;
+            Dot middleDot = new Dot(middleX, middleY);
+            LineParams besLineParams = default;
+            Pen coloPen;
+
+            for (double a = 0; a < Math.PI; a += Math.PI / 100)
             {
+                coloPen = Pens.Blue;
+                LineParams line = new LineParams(middleDot, a);
+                double sum = dots.Sum(dot => line.GetDistance(dot)) / dots.Count;
 
-                var points = GetPoints(result);
-                var dot1 = points.Item1;
-                var dot2 = points.Item2;
+                if (minSum > sum)
+                {
+                    minSum = sum;
+                    coloPen = Pens.Red;
+                } 
+                besLineParams = line;
 
-                g.DrawLine(Pens.Blue, dot1.X, dot1.Y, dot2.X, dot2.Y);
+
+
+                using (Graphics g = Graphics.FromImage(MainWindow.ImageBox))
+                {
+
+                    var points = besLineParams.GetDots();
+                    var dot1 = points.Item1;
+                    var dot2 = points.Item2;
+
+                    g.DrawLine(coloPen, dot1.X, dot1.Y, dot2.X, dot2.Y);
+                }
+
+                MainWindow.ImageBox = (Image)MainWindow.ImageBox.Clone();
+                await Task.Delay(1);
             }
 
-            MainWindow.ImageBox = (Image)MainWindow.ImageBox.Clone();
-        }
 
-        private (Dot, Dot) GetPoints(LineParams line)
-        {
-            Dot start = new Dot(0, 0);
-            Dot endPoint = new Dot(0, 0);
 
-            if (line.B != 0 && line.A != 0)
-            {
-                start.X = 0;
-                start.Y = (int) line.GetY(start.X);
-
-                endPoint.Y = 0;
-                endPoint.X = (int)line.GetX(endPoint.Y);
-            }
-
-            return (start, endPoint);
         }
     }
 }

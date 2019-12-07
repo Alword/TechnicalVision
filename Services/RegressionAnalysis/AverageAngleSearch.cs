@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TechnicalVision.WindowsForms.Abstractions;
 using TechnicalVision.WindowsForms.Models;
 
@@ -6,7 +7,7 @@ namespace TechnicalVision.WindowsForms.Services.RegressionAnalysis
 {
     public class AverageAngleSearch : IRegressionAnalysis
     {
-        public LineParams Search(IReadOnlyList<Dot> dots)
+        public (Dot, Dot) Search(IReadOnlyList<Dot> dots)
         {
             LineParams Sum = default;
             int countPairs = 0;
@@ -24,7 +25,8 @@ namespace TechnicalVision.WindowsForms.Services.RegressionAnalysis
                 }
             }
 
-            return Sum / countPairs;
+            throw new NotImplementedException();
+           //return Sum / countPairs;
         }
     }
 }

@@ -7,31 +7,37 @@ namespace TechnicalVision.WindowsForms.Services.RegressionAnalysis
 {
     public class ExoustiveSearch : IRegressionAnalysis
     {
-        public LineParams Search(IReadOnlyList<Dot> dots)
+        public (Dot, Dot) Search(IReadOnlyList<Dot> dots)
         {
-            int minA = 0;
-            int minB = 0;
+            var e = 0.1;
+            var minLine = new LineParams(0, 0, 0);
             double min = int.MaxValue;
-            for (int a = 0; a < 256; a++)
+            for (double c = -255; c < 255; c++)
             {
-                for (int b = 0; b < 256; b++)
-                {
-                    double sum = 0;
-                    foreach (var dot in dots)
-                    {
-                        sum += Math.Pow(dot.Y - a - b * dot.X, 2);
-                    }
 
-                    if (sum < min)
+                for (double a = -1; a < 1; a += e)
+                {
+                    for (double b = -1; b < 1; b += e)
                     {
-                        minA = a;
-                        minB = b;
+                        LineParams line = new LineParams(a, b, c);
+                        double sum = 0;
+                        foreach (var dot in dots)
+                        {
+
+                            sum += line.GetDistance(dot);
+
+                            if (sum > min) break;
+                        }
+
+                        if (sum >= min) continue;
+
+                        minLine = new LineParams(a, b, c);
                         min = sum;
                     }
                 }
             }
 
-            throw new NotImplementedException();
+            return minLine.GetDots();
         }
     }
 }

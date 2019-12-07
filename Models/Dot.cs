@@ -47,5 +47,11 @@ namespace TechnicalVision.WindowsForms.Models
         {
             return $"{X},{Y},{C}";
         }
+
+        public static Dot operator +(Dot l, Dot r)
+            => new Dot(l.X + r.X, l.Y + r.Y);
+
+        public static Dot operator +(Dot l, int r)
+            => new Dot(l.X + r, l.Y + r);
     }
 }

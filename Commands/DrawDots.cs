@@ -20,7 +20,7 @@ namespace TechnicalVision.WindowsForms.Commands
                 g.Clear(Color.White);
                 foreach (var dot in dots)
                 {
-                    g.FillEllipse(RandomColors.GetColor(dot.C), dot.X, dot.Y, 10, 10);
+                    g.FillEllipse(RandomColors.GetBrush(dot.C), dot.X, dot.Y, 10, 10);
                 }
             }
 
