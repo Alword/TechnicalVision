@@ -8,7 +8,7 @@ namespace TechnicalVision.WindowsForms.Services.RegressionAnalysis
 {
     public class ExoustiveSearch : IRegressionAnalysis
     {
-        public (Dot, Dot) Search(IReadOnlyList<Dot> dots)
+        public LineParams Search(IReadOnlyList<Dot> dots)
         {
             var e = 0.1;
             var minLine = new LineParams(0, 0, 0);
@@ -36,7 +36,7 @@ namespace TechnicalVision.WindowsForms.Services.RegressionAnalysis
                     }
                 }
             });
-            return minLine.GetDots();
+            return minLine;
         }
     }
 }

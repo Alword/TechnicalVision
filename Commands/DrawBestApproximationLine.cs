@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TechnicalVision.WindowsForms.Abstractions;
 using TechnicalVision.WindowsForms.Models;
-using TechnicalVision.WindowsForms.Services;
-using TechnicalVision.WindowsForms.Services.RegressionAnalysis;
 
 namespace TechnicalVision.WindowsForms.Commands
 {
@@ -22,7 +16,12 @@ namespace TechnicalVision.WindowsForms.Commands
 
         public async void Execute(List<Dot> dots)
         {
-            (Dot, Dot) besLineParams = regressionAnalysis.Search(MainWindow.CurrentDots);
+            Point end = MainWindow.GetDrawableSize();
+            Dot endDot = new Dot(end.X, end.Y);
+
+            (Dot, Dot) besLineParams = regressionAnalysis
+                .Search(MainWindow.CurrentDots)
+                .GetDots(end: endDot);
 
 
             using (Graphics g = Graphics.FromImage(MainWindow.ImageBox))

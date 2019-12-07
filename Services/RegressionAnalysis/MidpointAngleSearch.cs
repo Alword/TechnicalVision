@@ -10,7 +10,7 @@ namespace TechnicalVision.WindowsForms.Services.RegressionAnalysis
 {
     public class MidpointAngleSearch : IRegressionAnalysis
     {
-        public (Dot, Dot) Search(IReadOnlyList<Dot> dots)
+        public LineParams Search(IReadOnlyList<Dot> dots)
         {
             double minSum = int.MaxValue;
             int middleX = dots.Sum(d => d.X) / dots.Count;
@@ -31,7 +31,7 @@ namespace TechnicalVision.WindowsForms.Services.RegressionAnalysis
 
 
             }
-            return besLineParams.GetDots();
+            return besLineParams;
         }
     }
 }

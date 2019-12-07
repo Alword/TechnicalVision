@@ -67,7 +67,8 @@ namespace TechnicalVision.WindowsForms
 
         private void GenerateToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            generateCommand.Execute(100);
+            int dotsCount = (GetDrawableSize().X + GetDrawableSize().Y) / 5;
+            generateCommand.Execute(dotsCount);
             drawTargetCommand.Execute(CurrentDots);
         }
 

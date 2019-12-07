@@ -53,9 +53,9 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.splitter1);
             this.panel1.Controls.Add(this.listBox1);
-            this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.menuStrip1);
             this.panel1.Cursor = System.Windows.Forms.Cursors.Default;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -88,7 +88,7 @@
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Location = new System.Drawing.Point(0, 24);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(805, 426);
+            this.pictureBox1.Size = new System.Drawing.Size(628, 426);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 

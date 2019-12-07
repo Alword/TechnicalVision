@@ -77,10 +77,15 @@ namespace TechnicalVision.WindowsForms.Models
                    Math.Sqrt(Math.Pow(A, 2) + Math.Pow(B, 2));
         }
 
-        public (Dot, Dot) GetDots(Dot begin = default, int length = 250)
+        public (Dot, Dot) GetDots(Dot begin = default, Dot end = default)
         {
+            if (end.X == 0)
+            {
+                end = new Dot(255, 255);
+            }
+
             Dot dot1 = begin;
-            Dot dot2 = dot1 + length;
+            Dot dot2 = end;
 
             if (Math.Abs(B) > 0.01)
             {

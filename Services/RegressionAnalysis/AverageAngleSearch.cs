@@ -7,7 +7,7 @@ namespace TechnicalVision.WindowsForms.Services.RegressionAnalysis
 {
     public class AverageAngleSearch : IRegressionAnalysis
     {
-        public (Dot, Dot) Search(IReadOnlyList<Dot> dots)
+        public LineParams Search(IReadOnlyList<Dot> dots)
         {
             LineParams Sum = default;
             int countPairs = 0;
@@ -25,7 +25,7 @@ namespace TechnicalVision.WindowsForms.Services.RegressionAnalysis
                 }
             }
 
-            return (Sum / countPairs).GetDots();
+            return (Sum / countPairs);
         }
     }
 }
