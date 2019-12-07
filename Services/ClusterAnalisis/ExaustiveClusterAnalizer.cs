@@ -16,7 +16,7 @@ namespace TechnicalVision.WindowsForms.Services.ClusterAnalyzers
             double range = 2 * radius;
             Dot[] copy = new Dot[dots.Count];
             dots.CopyTo(copy);
-            var dotsToCluster = copy.ToList();
+            var dotsToCluster = copy.OrderByDescending(d=>d.X).ThenByDescending(d=>d.Y).ToList();
             List<Cluster> clusters = new List<Cluster>(dots.Count);
 
             while (dotsToCluster.Count > 0)
@@ -32,6 +32,17 @@ namespace TechnicalVision.WindowsForms.Services.ClusterAnalyzers
                 {
                     foreach (var inRangeDot in dotsInRange)
                     {
+                        if (dotsInCluster.Count > 0)
+                        {
+                            middlePoint = default;
+                            foreach (var dot in dotsInCluster)
+                            {
+                                middlePoint += dot;
+                            }
+
+                            middlePoint /= dotsInCluster.Count;
+                        }
+
                         Dot displaced = (middlePoint + inRangeDot) / 2;
                         dotsInCluster.Add(inRangeDot);
                         if (dotsInCluster.Any(d => d.GetDistance(displaced) >= radius))
