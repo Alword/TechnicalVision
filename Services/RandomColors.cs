@@ -20,19 +20,21 @@ namespace TechnicalVision.WindowsForms.Services
 
         public static Brush GetBrush(int color)
         {
+            color = color % ColorDictionary.Count;
             return IsValid(color) ? BrushDictionary[color] : Brushes.Black;
         }
 
         public static Color GetColor(int color)
         {
+            color = color % BrushDictionary.Count;
             return IsValid(color) ? ColorDictionary[color] : Color.Black;
         }
 
         private static void Initialize()
         {
-            foreach (int num in Enumerable.Range(0, 256))
+            foreach (int num in Enumerable.Range(0, 16))
             {
-                ColorDictionary.Add(num, Color.FromArgb(random.Next(0, 256), random.Next(0, 256), random.Next(0, 256)));
+                ColorDictionary.Add(num, Color.FromArgb(random.Next(0, 240), random.Next(0, 240), random.Next(0, 240)));
                 BrushDictionary.Add(num, new SolidBrush(ColorDictionary[num]));
             }
         }

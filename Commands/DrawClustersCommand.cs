@@ -24,10 +24,11 @@ namespace TechnicalVision.WindowsForms.Commands
         public void Execute(List<Dot> dots)
         {
             string promptValue = UserPrompter.ShowDialog("Введите радиус кластера", "Введите радиус кластера");
-            if (int.TryParse(promptValue, out int radius))
+            if (int.TryParse(promptValue, out int radius) && radius > 0)
             {
-
                 List<Cluster> clusterList = analyzer.SearchClusters(radius - DrawDots.DOT_RADIUS, dots);
+
+                drawDotsCommand.Execute(clusterList.SelectMany(d => d.Dots).ToList());
 
                 using (Graphics g = Graphics.FromImage(MainWindow.ImageBox))
                 {

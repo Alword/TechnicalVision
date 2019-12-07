@@ -13,13 +13,13 @@ namespace TechnicalVision.WindowsForms.Services.ClusterAnalyzers
         public List<Cluster> SearchClusters(double radius, List<Dot> dots)
         {
             int i = 0;
-            double range = 2 * radius;
+            double range = int.MaxValue;//radius * radius;
             Dot[] copy = new Dot[dots.Count];
             dots.CopyTo(copy);
             var dotsToCluster = copy.ToList();
             List<Cluster> clusters = new List<Cluster>(dots.Count);
 
-            Dot middlePoint = dotsToCluster.First();
+            Dot middlePoint = default;
             while (dotsToCluster.Count > 0)
             {
                 middlePoint = dotsToCluster.OrderBy(d => d.GetDistance(middlePoint)).First();
@@ -57,10 +57,12 @@ namespace TechnicalVision.WindowsForms.Services.ClusterAnalyzers
                         }
                     }
                 }
+
+                i = i + 1 % 255;
                 clusters.Add(new Cluster()
                 {
-                    Dots = dotsInCluster,
-                    Number = i++ % 255,
+                    Dots = ColoredDots(dotsInCluster, i),
+                    Number = i,
                     Radius = radius,
                     RadiusDot = middlePoint
                 });
@@ -69,6 +71,17 @@ namespace TechnicalVision.WindowsForms.Services.ClusterAnalyzers
             }
 
             return clusters;
+        }
+
+        public List<Dot> ColoredDots(List<Dot> dots, int i)
+        {
+            List<Dot> coloredDot = new List<Dot>(dots.Count);
+            foreach (var dot in dots)
+            {
+                coloredDot.Add(new Dot(dot.X, dot.Y, i));
+            }
+
+            return coloredDot;
         }
     }
 }
