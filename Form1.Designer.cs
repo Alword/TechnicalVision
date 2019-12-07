@@ -41,9 +41,9 @@
             this.построитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.линиюНаилучшегоПриближенияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.линияСреднихExtraDipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.рофланЛинияПоЦентруToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.рофланЛинияПоЦентруToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -153,16 +153,23 @@
             // линиюНаилучшегоПриближенияToolStripMenuItem
             // 
             this.линиюНаилучшегоПриближенияToolStripMenuItem.Name = "линиюНаилучшегоПриближенияToolStripMenuItem";
-            this.линиюНаилучшегоПриближенияToolStripMenuItem.Size = new System.Drawing.Size(265, 22);
-            this.линиюНаилучшегоПриближенияToolStripMenuItem.Text = "Линию наилучшего приближения";
+            this.линиюНаилучшегоПриближенияToolStripMenuItem.Size = new System.Drawing.Size(309, 22);
+            this.линиюНаилучшегоПриближенияToolStripMenuItem.Text = "Подбор коэффициентов";
             this.линиюНаилучшегоПриближенияToolStripMenuItem.Click += new System.EventHandler(this.DrawBestApproximationToolStripMenuItem_Click);
             // 
             // линияСреднихExtraDipToolStripMenuItem
             // 
             this.линияСреднихExtraDipToolStripMenuItem.Name = "линияСреднихExtraDipToolStripMenuItem";
-            this.линияСреднихExtraDipToolStripMenuItem.Size = new System.Drawing.Size(265, 22);
-            this.линияСреднихExtraDipToolStripMenuItem.Text = "Линия средних extra dip";
+            this.линияСреднихExtraDipToolStripMenuItem.Size = new System.Drawing.Size(309, 22);
+            this.линияСреднихExtraDipToolStripMenuItem.Text = "Среднее арифметическое коэффициентов";
             this.линияСреднихExtraDipToolStripMenuItem.Click += new System.EventHandler(this.AvarageAngleExtraDipToolStripMenuItem_Click);
+            // 
+            // рофланЛинияПоЦентруToolStripMenuItem
+            // 
+            this.рофланЛинияПоЦентруToolStripMenuItem.Name = "рофланЛинияПоЦентруToolStripMenuItem";
+            this.рофланЛинияПоЦентруToolStripMenuItem.Size = new System.Drawing.Size(309, 22);
+            this.рофланЛинияПоЦентруToolStripMenuItem.Text = "Подбор угла";
+            this.рофланЛинияПоЦентруToolStripMenuItem.Click += new System.EventHandler(this.MiddleDotToolStripMenuItem_Click);
             // 
             // panel2
             // 
@@ -180,13 +187,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(805, 450);
             this.panel3.TabIndex = 3;
-            // 
-            // рофланЛинияПоЦентруToolStripMenuItem
-            // 
-            this.рофланЛинияПоЦентруToolStripMenuItem.Name = "рофланЛинияПоЦентруToolStripMenuItem";
-            this.рофланЛинияПоЦентруToolStripMenuItem.Size = new System.Drawing.Size(265, 22);
-            this.рофланЛинияПоЦентруToolStripMenuItem.Text = "Рофлан линия по центру";
-            this.рофланЛинияПоЦентруToolStripMenuItem.Click += new System.EventHandler(this.MiddleDotToolStripMenuItem_Click);
             // 
             // MainWindow
             // 

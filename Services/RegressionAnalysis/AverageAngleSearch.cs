@@ -25,8 +25,7 @@ namespace TechnicalVision.WindowsForms.Services.RegressionAnalysis
                 }
             }
 
-            throw new NotImplementedException();
-           //return Sum / countPairs;
+            return (Sum / countPairs).GetDots();
         }
     }
 }

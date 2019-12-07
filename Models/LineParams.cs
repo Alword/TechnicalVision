@@ -73,7 +73,7 @@ namespace TechnicalVision.WindowsForms.Models
 
         public double GetDistance(Dot dot)
         {
-            return Math.Abs(A * dot.X + B + dot.Y + C) /
+            return Math.Abs(A * dot.X + B * dot.Y + C) /
                    Math.Sqrt(Math.Pow(A, 2) + Math.Pow(B, 2));
         }
 
@@ -94,7 +94,7 @@ namespace TechnicalVision.WindowsForms.Models
             }
             else
             {
-                //throw new NotSupportedException();
+                throw new NotSupportedException();
             }
 
             return (dot1, dot2);

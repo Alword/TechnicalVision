@@ -22,47 +22,23 @@ namespace TechnicalVision.WindowsForms.Commands
 
         public async void Execute(List<Dot> dots)
         {
-            //(Dot,Dot) result = regressionAnalysis.Search(MainWindow.CurrentDots);
+            (Dot, Dot) besLineParams = regressionAnalysis.Search(MainWindow.CurrentDots);
 
 
-            double minSum = int.MaxValue;
-            int middleX = dots.Sum(d => d.X) / dots.Count;
-            int middleY = dots.Sum(d => d.Y) / dots.Count;
-            Dot middleDot = new Dot(middleX, middleY);
-            LineParams besLineParams = default;
-            Pen coloPen;
-
-            for (double a = 0; a < Math.PI; a += Math.PI / 100)
+            using (Graphics g = Graphics.FromImage(MainWindow.ImageBox))
             {
-                coloPen = Pens.Blue;
-                LineParams line = new LineParams(middleDot, a);
-                double sum = dots.Sum(dot => line.GetDistance(dot)) / dots.Count;
 
-                if (minSum > sum)
-                {
-                    minSum = sum;
-                    coloPen = Pens.Red;
-                } 
-                besLineParams = line;
+                var points = besLineParams;
+                var dot1 = points.Item1;
+                var dot2 = points.Item2;
 
-
-
-                using (Graphics g = Graphics.FromImage(MainWindow.ImageBox))
-                {
-
-                    var points = besLineParams.GetDots();
-                    var dot1 = points.Item1;
-                    var dot2 = points.Item2;
-
-                    g.DrawLine(coloPen, dot1.X, dot1.Y, dot2.X, dot2.Y);
-                }
-
-                MainWindow.ImageBox = (Image)MainWindow.ImageBox.Clone();
-                await Task.Delay(1);
+                g.DrawLine(Pens.Blue, dot1.X, dot1.Y, dot2.X, dot2.Y);
             }
 
-
-
+            MainWindow.ImageBox = (Image)MainWindow.ImageBox.Clone();
+            await Task.Delay(1);
         }
+
     }
 }
+

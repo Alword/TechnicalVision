@@ -18,19 +18,19 @@ namespace TechnicalVision.WindowsForms.Services.RegressionAnalysis
             Dot middleDot = new Dot(middleX, middleY);
             LineParams besLineParams = default;
 
-            for (double a = 0; a < Math.PI; a += Math.PI / 10000)
+            for (double a = 0; a <= Math.PI; a += Math.PI / 1000)
             {
                 LineParams line = new LineParams(middleDot, a);
-                double sum = dots.Sum(dot => line.GetDistance(dot));
+                double sum = dots.Sum(dot => line.GetDistance(dot)) / dots.Count;
 
-                if (sum < minSum)
+                if (minSum > sum)
                 {
                     minSum = sum;
                     besLineParams = line;
-
                 }
-            }
 
+
+            }
             return besLineParams.GetDots();
         }
     }
