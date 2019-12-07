@@ -16,12 +16,13 @@ namespace TechnicalVision.WindowsForms.Services.ClusterAnalyzers
             double range = 2 * radius;
             Dot[] copy = new Dot[dots.Count];
             dots.CopyTo(copy);
-            var dotsToCluster = copy.OrderByDescending(d=>d.X).ThenByDescending(d=>d.Y).ToList();
+            var dotsToCluster = copy.ToList();
             List<Cluster> clusters = new List<Cluster>(dots.Count);
 
+            Dot middlePoint = dotsToCluster.First();
             while (dotsToCluster.Count > 0)
             {
-                Dot middlePoint = dotsToCluster.First();
+                middlePoint = dotsToCluster.OrderBy(d => d.GetDistance(middlePoint)).First();
                 var dotsInRange = dotsToCluster
                     .Where(d => d.GetDistance(middlePoint) <= range)
                     .OrderBy(d => d.GetDistance(middlePoint))
