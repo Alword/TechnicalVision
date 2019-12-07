@@ -91,7 +91,7 @@ namespace TechnicalVision.WindowsForms
             drawBestApproximationCommand.Execute(CurrentDots);
         }
 
-        private void AvarageAngleExtraDipToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AverageAngleExtraDipToolStripMenuItem_Click(object sender, EventArgs e)
         {
             drawAverageApproximationCommand.Execute(CurrentDots);
         }

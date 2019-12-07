@@ -167,7 +167,7 @@
             this.линияСреднихExtraDipToolStripMenuItem.Name = "линияСреднихExtraDipToolStripMenuItem";
             this.линияСреднихExtraDipToolStripMenuItem.Size = new System.Drawing.Size(309, 22);
             this.линияСреднихExtraDipToolStripMenuItem.Text = "Среднее арифметическое коэффициентов";
-            this.линияСреднихExtraDipToolStripMenuItem.Click += new System.EventHandler(this.AvarageAngleExtraDipToolStripMenuItem_Click);
+            this.линияСреднихExtraDipToolStripMenuItem.Click += new System.EventHandler(this.AverageAngleExtraDipToolStripMenuItem_Click);
             // 
             // рофланЛинияПоЦентруToolStripMenuItem
             // 
