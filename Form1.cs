@@ -43,7 +43,7 @@ namespace TechnicalVision.WindowsForms
             drawTargetCommand = new DrawTargetToMiddlePoint(this);
             exhaustiveClusterAnalyzerCommand = new DrawClustersCommand(this, new ExhaustiveClusterAnalyzer());
             
-            CurrentDots = new BindingList<Dot>();
+            CurrentDots = new MyBindingList<Dot>();
             listBox1.DataSource = CurrentDots;
             CurrentDots.ListChanged += CurrentDots_ListChanged;
         }
@@ -56,7 +56,7 @@ namespace TechnicalVision.WindowsForms
             }
         }
 
-        public BindingList<Dot> CurrentDots { get; set; }
+        public MyBindingList<Dot> CurrentDots { get; set; }
 
         public Image ImageBox
         {

@@ -24,14 +24,7 @@ namespace TechnicalVision.WindowsForms.Abstractions
 
         protected void AddRange(IList<Dot> dots)
         {
-            var lastDot = dots.Last();
-            MainWindow.Draw = false;
-            foreach (Dot dot in dots.Where(d => !d.Equals(lastDot)))
-            {
-                MainWindow.CurrentDots.Add(dot);
-            }
-            MainWindow.Draw = true;
-            MainWindow.CurrentDots.Add(lastDot);
+            MainWindow.CurrentDots.AddRange(dots);
         }
     }
 }
