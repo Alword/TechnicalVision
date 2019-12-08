@@ -53,8 +53,8 @@ namespace TechnicalVision.WindowsForms.Commands
             string stringText = $"{cluster.Number}";
             FontFamily family = new FontFamily("Arial");
             int fontStyle = (int)FontStyle.Regular;
-            int emSize = 16;
-            Point origin = new Point(cluster.RadiusDot.X - emSize / 2,
+            int emSize = (int)cluster.Radius / 2;
+            Point origin = new Point(cluster.RadiusDot.X - emSize * stringText.Length / 3,
                 cluster.RadiusDot.Y - emSize / 2);
             StringFormat format = StringFormat.GenericDefault;
 
@@ -66,8 +66,9 @@ namespace TechnicalVision.WindowsForms.Commands
                 format);
 
             g.SmoothingMode = SmoothingMode.AntiAlias;
+
             g.FillPath(RandomColors.GetBrush(cluster.Number), myPath);
-            g.DrawPath(new Pen(Brushes.Black,1F), myPath);
+            //g.DrawPath(new Pen(Brushes.Black,2), myPath);
         }
     }
 }
