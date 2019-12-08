@@ -78,6 +78,7 @@
     <Compile Include="Services\RegressionAnalysis\AverageAngleSearch.cs" />
     <Compile Include="Services\RegressionAnalysis\ExhaustiveSearch.cs" />
     <Compile Include="Services\RegressionAnalysis\MidpointAngleSearch.cs" />
+    <Compile Include="Services\RepeatDots.cs" />
     <Compile Include="Services\SaveCsvToFile.cs" />
     <Compile Include="Views\UserPrompter.cs" />
     <Compile Include="Views\PromptView.cs">

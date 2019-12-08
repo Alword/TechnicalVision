@@ -27,7 +27,7 @@ namespace TechnicalVision.WindowsForms
         private readonly ICommand<IList<Dot>> exhaustiveClusterAnalyzerCommand;
 
 
-        private readonly ICommand openCsvFile;
+        private readonly ICommand<int> openCsvFile;
         private readonly ICommand<IList<Dot>> saveCsvFile;
 
         public MainWindow()
@@ -42,7 +42,7 @@ namespace TechnicalVision.WindowsForms
             middleDotCommand = new DrawBestApproximationLine(this, new MidpointAngleSearch());
             drawTargetCommand = new DrawTargetToMiddlePoint(this);
             exhaustiveClusterAnalyzerCommand = new DrawClustersCommand(this, new ExhaustiveClusterAnalyzer());
-            
+
             CurrentDots = new MyBindingList<Dot>();
             listBox1.DataSource = CurrentDots;
             CurrentDots.ListChanged += CurrentDots_ListChanged;
@@ -77,7 +77,8 @@ namespace TechnicalVision.WindowsForms
 
         private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            openCsvFile.Execute();
+            int.TryParse(textBox1.Text, out int result);
+            openCsvFile.Execute(result);
         }
 
         private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
