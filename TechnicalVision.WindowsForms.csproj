@@ -58,6 +58,7 @@
     <Compile Include="Commands\SaveCsvCommand.cs" />
     <Compile Include="Models\Cluster.cs" />
     <Compile Include="Models\LineParams.cs" />
+    <Compile Include="Services\ClusterAnalisis\ClusterOptimizer.cs" />
     <Compile Include="Services\ClusterAnalisis\ExaustiveClusterAnalizer.cs" />
     <Compile Include="Services\CsvOpenFileDialog.cs" />
     <Compile Include="Services\CsvSafeFileDialog.cs" />

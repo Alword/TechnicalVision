@@ -12,5 +12,21 @@ namespace TechnicalVision.WindowsForms.Models
         public double Radius { get; set; }
         public Dot RadiusDot { get; set; }
         public List<Dot> Dots { get; set; }
+
+        public bool InRange(Dot dot)
+        {
+            return RadiusDot.GetDistance(dot) < Radius;
+        }
+
+        public void AddDot(Dot dot)
+        {
+            var clusterDot = new Dot(dot.X, dot.Y, Number);
+            Dots.Add(clusterDot);
+        }
+
+        public void RemoveDot(Dot dot)
+        {
+            Dots.Remove(dot);
+        }
     }
 }

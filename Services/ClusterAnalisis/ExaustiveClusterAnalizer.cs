@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TechnicalVision.WindowsForms.Abstractions;
 using TechnicalVision.WindowsForms.Models;
+using TechnicalVision.WindowsForms.Services.ClusterAnalisis;
 
 namespace TechnicalVision.WindowsForms.Services.ClusterAnalyzers
 {
@@ -58,7 +59,6 @@ namespace TechnicalVision.WindowsForms.Services.ClusterAnalyzers
                     }
                 }
 
-                i = i + 1 % 255;
                 clusters.Add(new Cluster()
                 {
                     Dots = ColoredDots(dotsInCluster, i),
@@ -68,7 +68,10 @@ namespace TechnicalVision.WindowsForms.Services.ClusterAnalyzers
                 });
 
                 dotsToCluster = dotsToCluster.Except(dotsInCluster).ToList();
+                i += 1;
             }
+
+            clusters = ClusterOptimizer.RemoveSharedClusters(clusters);
 
             return clusters;
         }
