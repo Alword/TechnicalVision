@@ -14,6 +14,7 @@ namespace TechnicalVision.WindowsForms
 {
     public partial class MainWindow : Form
     {
+        public bool Draw = true;
         private readonly ICommand<int> generateCommand;
         private readonly ICommand<IList<Dot>> drawDotsCommand;
 
@@ -49,7 +50,10 @@ namespace TechnicalVision.WindowsForms
 
         private void CurrentDots_ListChanged(object sender, ListChangedEventArgs e)
         {
-            drawDotsCommand.Execute(CurrentDots);
+            if (Draw)
+            {
+                drawDotsCommand.Execute(CurrentDots);
+            }
         }
 
         public BindingList<Dot> CurrentDots { get; set; }
@@ -118,6 +122,11 @@ namespace TechnicalVision.WindowsForms
         {
             var mouse = (MouseEventArgs)e;
             CurrentDots.Add(new Dot(mouse.X, mouse.Y, RandomColors.RandomColorNum()));
+        }
+
+        private void NewPoolToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CurrentDots.Clear();
         }
     }
 }

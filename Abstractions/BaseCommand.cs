@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 using TechnicalVision.WindowsForms.Models;
 
 namespace TechnicalVision.WindowsForms.Abstractions
@@ -22,10 +24,14 @@ namespace TechnicalVision.WindowsForms.Abstractions
 
         protected void AddRange(IList<Dot> dots)
         {
-            foreach (Dot dot in dots)
+            var lastDot = dots.Last();
+            MainWindow.Draw = false;
+            foreach (Dot dot in dots.Where(d => !d.Equals(lastDot)))
             {
                 MainWindow.CurrentDots.Add(dot);
             }
+            MainWindow.Draw = true;
+            MainWindow.CurrentDots.Add(lastDot);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using TechnicalVision.WindowsForms.Abstractions;
 using TechnicalVision.WindowsForms.Models;
@@ -36,10 +37,37 @@ namespace TechnicalVision.WindowsForms.Commands
                         int y = (int)(cluster.RadiusDot.Y - cluster.Radius - DrawDots.DOT_RADIUS);
                         int size = (int)(cluster.Radius + DrawDots.DOT_RADIUS) * 2;
                         g.DrawEllipse(pen, x, y, size, size);
+
+                        DrawText(g, cluster);
+
                     }
                 }
                 MainWindow.ImageBox = (Image)MainWindow.ImageBox.Clone();
             }
+        }
+
+        private void DrawText(Graphics g, Cluster cluster)
+        {
+            GraphicsPath myPath = new GraphicsPath();
+
+            string stringText = $"{cluster.Number}";
+            FontFamily family = new FontFamily("Arial");
+            int fontStyle = (int)FontStyle.Regular;
+            int emSize = 16;
+            Point origin = new Point(cluster.RadiusDot.X - emSize / 2,
+                cluster.RadiusDot.Y - emSize / 2);
+            StringFormat format = StringFormat.GenericDefault;
+
+            myPath.AddString(stringText,
+                family,
+                fontStyle,
+                emSize,
+                origin,
+                format);
+
+            g.SmoothingMode = SmoothingMode.AntiAlias;
+            g.FillPath(RandomColors.GetBrush(cluster.Number), myPath);
+            g.DrawPath(new Pen(Brushes.Black,1F), myPath);
         }
     }
 }

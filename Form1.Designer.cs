@@ -112,8 +112,8 @@
             // файлToolStripMenuItem
             // 
             this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.OpenToolStripMenuItem,
             this.сохранитьToolStripMenuItem,
+            this.OpenToolStripMenuItem,
             this.SaveAsToolStripMenuItem});
             this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
             this.файлToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
@@ -122,20 +122,21 @@
             // OpenToolStripMenuItem
             // 
             this.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem";
-            this.OpenToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.OpenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.OpenToolStripMenuItem.Text = "Открыть";
             this.OpenToolStripMenuItem.Click += new System.EventHandler(this.OpenToolStripMenuItem_Click);
             // 
             // сохранитьToolStripMenuItem
             // 
             this.сохранитьToolStripMenuItem.Name = "сохранитьToolStripMenuItem";
-            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
-            this.сохранитьToolStripMenuItem.Text = "Сохранить";
+            this.сохранитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.сохранитьToolStripMenuItem.Text = "Новый";
+            this.сохранитьToolStripMenuItem.Click += new System.EventHandler(this.NewPoolToolStripMenuItem_Click);
             // 
             // SaveAsToolStripMenuItem
             // 
             this.SaveAsToolStripMenuItem.Name = "SaveAsToolStripMenuItem";
-            this.SaveAsToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
+            this.SaveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.SaveAsToolStripMenuItem.Text = "Сохранить как";
             this.SaveAsToolStripMenuItem.Click += new System.EventHandler(this.SaveAsToolStripMenuItem_Click);
             // 
@@ -196,7 +197,7 @@
             // подборПозицийToolStripMenuItem
             // 
             this.подборПозицийToolStripMenuItem.Name = "подборПозицийToolStripMenuItem";
-            this.подборПозицийToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.подборПозицийToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.подборПозицийToolStripMenuItem.Text = "Подбор позиций";
             this.подборПозицийToolStripMenuItem.Click += new System.EventHandler(this.ExhaustiveAnalyzerToolStripMenuItem_Click);
             // 
