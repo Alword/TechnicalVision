@@ -12,7 +12,7 @@ namespace TechnicalVision.WindowsForms.Services
         private static readonly int Start = 10;
         private static readonly int End = 240;
 
-        private static readonly Random random = new Random(159753);
+        private static readonly Random Random = new Random(159753);
         private static readonly Dictionary<int, Color> ColorDictionary;
         private static readonly Dictionary<int, Brush> BrushDictionary;
 
@@ -39,7 +39,7 @@ namespace TechnicalVision.WindowsForms.Services
         {
             foreach (int num in Enumerable.Range(0, Colors))
             {
-                ColorDictionary.Add(num, Color.FromArgb(random.Next(Start, End), random.Next(Start, End), random.Next(Start, End)));
+                ColorDictionary.Add(num, Color.FromArgb(Random.Next(Start, End), Random.Next(Start, End), Random.Next(Start, End)));
                 BrushDictionary.Add(num, new SolidBrush(ColorDictionary[num]));
             }
         }
@@ -51,7 +51,7 @@ namespace TechnicalVision.WindowsForms.Services
 
         public static int RandomColorNum()
         {
-            return random.Next(0, ColorDictionary.Count);
+            return Random.Next(0, ColorDictionary.Count);
         }
     }
 }

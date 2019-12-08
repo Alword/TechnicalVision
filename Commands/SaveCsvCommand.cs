@@ -5,9 +5,9 @@ using TechnicalVision.WindowsForms.Services;
 
 namespace TechnicalVision.WindowsForms.Commands
 {
-    public class SaveCsvCommand : ICommand<List<Dot>>
+    public class SaveCsvCommand : ICommand<IList<Dot>>
     {
-        public void Execute(List<Dot> dots)
+        public void Execute(IList<Dot> dots)
         {
             // open window
             string filePath = CsvSafeFileDialog.TryGetCsvFilePath(out bool isFileSelected);

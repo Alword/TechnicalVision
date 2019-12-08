@@ -5,7 +5,7 @@ using TechnicalVision.WindowsForms.Models;
 
 namespace TechnicalVision.WindowsForms.Commands
 {
-    public class DrawBestApproximationLine : BaseCommand, ICommand<List<Dot>>
+    public class DrawBestApproximationLine : BaseCommand, ICommand<IList<Dot>>
     {
         private readonly IRegressionAnalysis regressionAnalysis;
 
@@ -14,7 +14,7 @@ namespace TechnicalVision.WindowsForms.Commands
             regressionAnalysis = regression;
         }
 
-        public async void Execute(List<Dot> dots)
+        public async void Execute(IList<Dot> dots)
         {
             Point end = MainWindow.GetDrawableSize();
             var endDot = new Dot(end.X, end.Y);

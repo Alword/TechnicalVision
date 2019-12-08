@@ -11,12 +11,12 @@ namespace TechnicalVision.WindowsForms.Services.ClusterAnalyzers
 {
     public class ExhaustiveClusterAnalyzer : IRadialClusterAnalyzer
     {
-        public List<Cluster> SearchClusters(double radius, List<Dot> dots)
+        public IList<Cluster> SearchClusters(double radius, IList<Dot> dots)
         {
             int i = 0;
             double range = int.MaxValue;//radius * radius;
             Dot[] copy = new Dot[dots.Count];
-            dots.CopyTo(copy);
+            dots.CopyTo(copy, 0);
             var dotsToCluster = copy.ToList();
             List<Cluster> clusters = new List<Cluster>(dots.Count);
 

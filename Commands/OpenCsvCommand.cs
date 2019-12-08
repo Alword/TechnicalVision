@@ -21,7 +21,7 @@ namespace TechnicalVision.WindowsForms.Commands
             var reader = new ReadCsvFromFile(filePath);
             List<Dot> dots = reader.GetDots();
             // display to list
-            MainWindow.CurrentDots = dots;
+            AddNesList(dots);
         }
     }
 }

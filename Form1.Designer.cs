@@ -43,10 +43,10 @@
             this.линияСреднихExtraDipToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.рофланЛинияПоЦентруToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.среднийXИYToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.разбитьНаКластерыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.подборПозицийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -75,6 +75,7 @@
             this.pictureBox1.Size = new System.Drawing.Size(628, 426);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // splitter1
             // 
@@ -164,6 +165,7 @@
             // 
             // линияСреднихExtraDipToolStripMenuItem
             // 
+            this.линияСреднихExtraDipToolStripMenuItem.Enabled = false;
             this.линияСреднихExtraDipToolStripMenuItem.Name = "линияСреднихExtraDipToolStripMenuItem";
             this.линияСреднихExtraDipToolStripMenuItem.Size = new System.Drawing.Size(309, 22);
             this.линияСреднихExtraDipToolStripMenuItem.Text = "Среднее арифметическое коэффициентов";
@@ -183,6 +185,21 @@
             this.среднийXИYToolStripMenuItem.Text = "Средний X и Y";
             this.среднийXИYToolStripMenuItem.Click += new System.EventHandler(this.TargetXY_ToolStripMenuItem_Click);
             // 
+            // разбитьНаКластерыToolStripMenuItem
+            // 
+            this.разбитьНаКластерыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.подборПозицийToolStripMenuItem});
+            this.разбитьНаКластерыToolStripMenuItem.Name = "разбитьНаКластерыToolStripMenuItem";
+            this.разбитьНаКластерыToolStripMenuItem.Size = new System.Drawing.Size(113, 20);
+            this.разбитьНаКластерыToolStripMenuItem.Text = "Поиск кластеров";
+            // 
+            // подборПозицийToolStripMenuItem
+            // 
+            this.подборПозицийToolStripMenuItem.Name = "подборПозицийToolStripMenuItem";
+            this.подборПозицийToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.подборПозицийToolStripMenuItem.Text = "Подбор позиций";
+            this.подборПозицийToolStripMenuItem.Click += new System.EventHandler(this.ExhaustiveAnalyzerToolStripMenuItem_Click);
+            // 
             // panel2
             // 
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -199,21 +216,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(805, 450);
             this.panel3.TabIndex = 3;
-            // 
-            // разбитьНаКластерыToolStripMenuItem
-            // 
-            this.разбитьНаКластерыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.подборПозицийToolStripMenuItem});
-            this.разбитьНаКластерыToolStripMenuItem.Name = "разбитьНаКластерыToolStripMenuItem";
-            this.разбитьНаКластерыToolStripMenuItem.Size = new System.Drawing.Size(113, 20);
-            this.разбитьНаКластерыToolStripMenuItem.Text = "Поиск кластеров";
-            // 
-            // подборПозицийToolStripMenuItem
-            // 
-            this.подборПозицийToolStripMenuItem.Name = "подборПозицийToolStripMenuItem";
-            this.подборПозицийToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.подборПозицийToolStripMenuItem.Text = "Подбор позиций";
-            this.подборПозицийToolStripMenuItem.Click += new System.EventHandler(this.ExhaustiveAnalyzerToolStripMenuItem_Click);
             // 
             // MainWindow
             // 

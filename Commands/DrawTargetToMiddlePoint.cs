@@ -6,13 +6,13 @@ using TechnicalVision.WindowsForms.Models;
 
 namespace TechnicalVision.WindowsForms.Commands
 {
-    public class DrawTargetToMiddlePoint : BaseCommand, ICommand<List<Dot>>
+    public class DrawTargetToMiddlePoint : BaseCommand, ICommand<IList<Dot>>
     {
         public DrawTargetToMiddlePoint(MainWindow mainWindow) : base(mainWindow)
         {
         }
 
-        public void Execute(List<Dot> dots)
+        public void Execute(IList<Dot> dots)
         {
             Point screeSize = MainWindow.GetDrawableSize();
 

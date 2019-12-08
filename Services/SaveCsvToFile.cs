@@ -14,7 +14,7 @@ namespace TechnicalVision.WindowsForms.Services
 
         public string FilePath { get; }
 
-        public void TrySaveToFile(List<Dot> dots)
+        public void TrySaveToFile(IList<Dot> dots)
         {
             File.WriteAllLines(FilePath, dots.Select(d => d.ToString()));
         }

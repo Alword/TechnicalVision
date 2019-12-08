@@ -8,7 +8,7 @@ using TechnicalVision.WindowsForms.Views;
 
 namespace TechnicalVision.WindowsForms.Commands
 {
-    public class DrawClustersCommand : BaseCommand, ICommand<List<Dot>>
+    public class DrawClustersCommand : BaseCommand, ICommand<IList<Dot>>
     {
         private readonly ICommand<List<Dot>> drawDotsCommand;
         private readonly IRadialClusterAnalyzer analyzer;
@@ -18,12 +18,12 @@ namespace TechnicalVision.WindowsForms.Commands
             drawDotsCommand = new DrawDots(mainWindow);
         }
 
-        public void Execute(List<Dot> dots)
+        public void Execute(IList<Dot> dots)
         {
             string promptValue = UserPrompter.ShowDialog("Введите радиус кластера", "Введите радиус кластера");
             if (int.TryParse(promptValue, out int radius) && radius > 0)
             {
-                List<Cluster> clusterList = analyzer.SearchClusters(radius - DrawDots.DOT_RADIUS, dots);
+                IList<Cluster> clusterList = analyzer.SearchClusters(radius - DrawDots.DOT_RADIUS, dots);
 
                 drawDotsCommand.Execute(clusterList.SelectMany(d => d.Dots).ToList());
 

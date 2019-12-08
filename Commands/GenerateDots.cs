@@ -32,7 +32,7 @@ namespace TechnicalVision.WindowsForms.Commands
                     Y = Random.Next(0, screSize.Y),
                     C = Random.Next(0, RandomColors.RandomColorNum())
                 }));
-            MainWindow.CurrentDots = randomDots;
+            AddNesList(randomDots);
         }
     }
 }

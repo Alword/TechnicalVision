@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using TechnicalVision.WindowsForms.Abstractions;
 using TechnicalVision.WindowsForms.Commands;
 using TechnicalVision.WindowsForms.Models;
+using TechnicalVision.WindowsForms.Services;
 using TechnicalVision.WindowsForms.Services.ClusterAnalyzers;
 using TechnicalVision.WindowsForms.Services.RegressionAnalysis;
 
@@ -13,20 +15,19 @@ namespace TechnicalVision.WindowsForms
     public partial class MainWindow : Form
     {
         private readonly ICommand<int> generateCommand;
-        private readonly ICommand<List<Dot>> drawDotsCommand;
+        private readonly ICommand<IList<Dot>> drawDotsCommand;
 
-        private readonly ICommand<List<Dot>> drawAverageApproximationCommand;
-        private readonly ICommand<List<Dot>> drawBestApproximationCommand;
-        private readonly ICommand<List<Dot>> middleDotCommand;
+        private readonly ICommand<IList<Dot>> drawAverageApproximationCommand;
+        private readonly ICommand<IList<Dot>> drawBestApproximationCommand;
+        private readonly ICommand<IList<Dot>> middleDotCommand;
 
-        private readonly ICommand<List<Dot>> drawTargetCommand;
+        private readonly ICommand<IList<Dot>> drawTargetCommand;
 
-        private readonly ICommand<List<Dot>> exhaustiveClusterAnalyzerCommand;
+        private readonly ICommand<IList<Dot>> exhaustiveClusterAnalyzerCommand;
 
 
         private readonly ICommand openCsvFile;
-        private readonly ICommand<List<Dot>> saveCsvFile;
-        private List<Dot> currentDots;
+        private readonly ICommand<IList<Dot>> saveCsvFile;
 
         public MainWindow()
         {
@@ -39,19 +40,19 @@ namespace TechnicalVision.WindowsForms
             drawAverageApproximationCommand = new DrawBestApproximationLine(this, new AverageAngleSearch());
             middleDotCommand = new DrawBestApproximationLine(this, new MidpointAngleSearch());
             drawTargetCommand = new DrawTargetToMiddlePoint(this);
-            exhaustiveClusterAnalyzerCommand = new DrawClustersCommand(this,new ExhaustiveClusterAnalyzer());
+            exhaustiveClusterAnalyzerCommand = new DrawClustersCommand(this, new ExhaustiveClusterAnalyzer());
+            
+            CurrentDots = new BindingList<Dot>();
+            listBox1.DataSource = CurrentDots;
+            CurrentDots.ListChanged += CurrentDots_ListChanged;
         }
 
-        public List<Dot> CurrentDots
+        private void CurrentDots_ListChanged(object sender, ListChangedEventArgs e)
         {
-            get => currentDots ?? (currentDots = new List<Dot>(0));
-            set
-            {
-                currentDots = value;
-                listBox1.DataSource = currentDots;
-                drawDotsCommand.Execute(currentDots);
-            }
+            drawDotsCommand.Execute(CurrentDots);
         }
+
+        public BindingList<Dot> CurrentDots { get; set; }
 
         public Image ImageBox
         {
@@ -111,6 +112,12 @@ namespace TechnicalVision.WindowsForms
         {
             drawDotsCommand.Execute(CurrentDots);
             exhaustiveClusterAnalyzerCommand.Execute(CurrentDots);
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            var mouse = (MouseEventArgs)e;
+            CurrentDots.Add(new Dot(mouse.X, mouse.Y, RandomColors.RandomColorNum()));
         }
     }
 }

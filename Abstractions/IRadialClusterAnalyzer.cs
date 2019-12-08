@@ -9,6 +9,6 @@ namespace TechnicalVision.WindowsForms.Abstractions
 {
     public interface IRadialClusterAnalyzer
     {
-        List<Cluster> SearchClusters(double radius, List<Dot> dots);
+        IList<Cluster> SearchClusters(double radius, IList<Dot> dots);
     }
 }

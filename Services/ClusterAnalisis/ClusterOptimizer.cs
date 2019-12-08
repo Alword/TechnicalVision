@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Windows.Forms;
 using TechnicalVision.WindowsForms.Models;
 
 namespace TechnicalVision.WindowsForms.Services.ClusterAnalisis
@@ -58,8 +59,10 @@ namespace TechnicalVision.WindowsForms.Services.ClusterAnalisis
                 var allInRange = true;
                 foreach (var dot in cluster.Dots)
                 {
-                    sharedDotsDictionary.Add(dot, clusters.Where(c => !c.Equals(cluster) && c.InRange(dot)).ToList());
-
+                    if (!sharedDotsDictionary.ContainsKey(dot))
+                    { 
+                        sharedDotsDictionary.Add(dot, clusters.Where(c => !c.Equals(cluster) && c.InRange(dot)).ToList());
+                    }
                     allInRange = sharedDotsDictionary[dot].Any();
 
                     if (!allInRange)

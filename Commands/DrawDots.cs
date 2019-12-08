@@ -6,7 +6,7 @@ using TechnicalVision.WindowsForms.Services;
 
 namespace TechnicalVision.WindowsForms.Commands
 {
-    public class DrawDots : BaseCommand, ICommand<List<Dot>>
+    public class DrawDots : BaseCommand, ICommand<IList<Dot>>
     {
         public const int DOT_RADIUS = 4;
 
@@ -14,7 +14,7 @@ namespace TechnicalVision.WindowsForms.Commands
         {
         }
 
-        public void Execute(List<Dot> dots)
+        public void Execute(IList<Dot> dots)
         {
             Point screeSize = MainWindow.GetDrawableSize();
             var image = new Bitmap(screeSize.X, screeSize.Y);
